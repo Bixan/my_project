@@ -123,7 +123,7 @@ BOOL CServerDlg::OnInitDialog()
 	// 设置此对话框的图标。	当应用程序主窗口不是对话框时，框架将自动
 	//	执行此操作
 	SetIcon(m_hIcon, TRUE);	// 设置大图标
-	SetIcon(m_hIcon, FALSE);	// 设置小图标
+	SetIcon(m_hIcon, FALSE); // 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
 
@@ -270,10 +270,10 @@ LRESULT CServerDlg::OnAcceptSucceed(WPARAM wParam, LPARAM lParam)
 LRESULT CServerDlg::OnAcceptFailure(WPARAM wParam, LPARAM lParam)
 {
 	AfxMessageBox("[Server]: 客户端连接失败");
-	//状态条提示信息
+	// 状态条提示信息
 	m_StatusBar.SetPaneText(0, "等待连接失败，请尝试重启后，在进行等待连接");
 
-	//恢复打开服务器的按钮
+	// 恢复打开服务器的按钮
 	m_btnOpenServer.EnableWindow(TRUE);
 	return 0;
 }
@@ -328,8 +328,8 @@ void CServerDlg::OnBnClickedBtnOpenServer()
 void CServerDlg::OnBnClickedBtnCloseServer()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	m_Messages.CloaseResource();		// 释放资源
-	EndDialog(0);		// 结束对话框
+	m_Messages.CloaseResource(); // 释放资源
+	EndDialog(0); // 结束对话框
 }
 
 // 远程cmd
@@ -370,5 +370,5 @@ void CServerDlg::OnClose()
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	CDialogEx::OnClose();
-	m_Messages.CloaseResource();	// 释放资源
+	m_Messages.CloaseResource(); // 释放资源
 }

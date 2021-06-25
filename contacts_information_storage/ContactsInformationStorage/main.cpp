@@ -10,8 +10,7 @@ Date：2020/05/01 ~ 2020/05/04
 
 int main()
 {
-	// 启动程序
-	StartProgram();
+	StartProgram(); // 启动程序
 
 	system("pause");
 	return 0;

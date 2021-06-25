@@ -6,7 +6,7 @@ class CCriticalSection
 {
 public:
 	CCriticalSection();	// 初始化临界区
-	~CCriticalSection();	// 释放临界区
+	~CCriticalSection(); // 释放临界区
 	void EnterCS();
 	void LeaveCS();
 	void DeleteCS();

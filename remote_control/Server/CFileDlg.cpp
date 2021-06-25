@@ -93,8 +93,7 @@ BOOL CFileDlg::OnInitDialog()
 		LVS_EX_TWOCLICKACTIVATE |
 		LVS_EX_GRIDLINES);
 
-	return TRUE;	// return TRUE unless you set the focus to a control
-					// 异常: OCX 属性页应返回 FALSE
+	return TRUE;
 }
 
 
@@ -322,9 +321,11 @@ LRESULT CFileDlg::OnDownFileDataSucc(WPARAM wParam, LPARAM lParam)
 
 	// 文件下载成功，更新控件数值
 	m_ProgressDownUp.SetPos(0);
+
 	// 清空存储文件数据的变量
 	ZeroMemory(&m_LIDownFileSize, sizeof(m_LIDownFileSize));
 	ZeroMemory(&m_LICurlDownFileSize, sizeof(m_LICurlDownFileSize));
+	
 	return 0;
 }
 
@@ -335,11 +336,14 @@ LRESULT CFileDlg::OnUploadFileDataSucc(WPARAM wParam, LPARAM lParam)
 	KillTimer(1);
 	m_ProgressDownUp.SetPos(100);
 	AfxMessageBox("[Server]: 文件上传成功，请到对应的位置查看");
+	
 	// 文件下载成功，更新控件数值
 	m_ProgressDownUp.SetPos(0);
+	
 	// 清空存储文件数据的变量
 	ZeroMemory(&m_LIDownFileSize, sizeof(m_LIDownFileSize));
 	ZeroMemory(&m_LICurlDownFileSize, sizeof(m_LICurlDownFileSize));
+	
 	return 0;
 }
 
@@ -458,7 +462,7 @@ void CFileDlg::OnDblclkListFile(NMHDR* pNMHDR, LRESULT* pResult)
 	// TODO: 在此添加控件通知处理程序代码
 	*pResult = 0;
 
-	//获取左键双击的项
+	// 获取左键双击的项
 	POSITION pos = m_ListFile.GetFirstSelectedItemPosition();
 	m_nIdx = m_ListFile.GetNextSelectedItem(pos);
 
@@ -478,7 +482,7 @@ void CFileDlg::OnRclickListFile(NMHDR* pNMHDR, LRESULT* pResult)
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	// TODO: 在此添加控件通知处理程序代码
 	*pResult = 0;
-	//获取右键单击的项
+	// 获取右键单击的项
 	POSITION pos = m_ListFile.GetFirstSelectedItemPosition();
 	m_nIdx = m_ListFile.GetNextSelectedItem(pos);
 
@@ -543,7 +547,7 @@ void CFileDlg::DoubleListCtrl()
 	{
 		// 发送获取驱动器的头信息
 		PACKETHEAD ph;
-		ph.m_nCmd = PK_GET_FOLDER_NEXT_DATA;	// 获取当前文件夹的下一层数据
+		ph.m_nCmd = PK_GET_FOLDER_NEXT_DATA; // 获取当前文件夹的下一层数据
 		ph.m_nLen = strPath.GetLength() + 1;
 
 		// 发送数据长度
@@ -572,7 +576,7 @@ void CFileDlg::DoubleListCtrl()
 
 			// 发送获上一层文件夹的头信息
 			PACKETHEAD ph;
-			ph.m_nCmd = PK_GET_FOLDER_PREV_DATA;	// 获取当前文件夹的上一层数据
+			ph.m_nCmd = PK_GET_FOLDER_PREV_DATA; // 获取当前文件夹的上一层数据
 			ph.m_nLen = strPrvePath.GetLength() + 1;
 
 			if (!m_pMessages->SendData((char*)&ph, sizeof(ph)))
@@ -630,7 +634,7 @@ void CFileDlg::OnDownIsFile()
 
 	// 向客户端发送下载申请，客户端返回知否可以下载
 	PACKETHEAD ph;
-	ph.m_nCmd = PK_DOWN_IS_FILE;	 // 下载的是否是文件
+	ph.m_nCmd = PK_DOWN_IS_FILE; // 下载的是否是文件
 	ph.m_nLen = m_csDownFilePath.GetLength() + 1;
 
 	// 发送数据长度

@@ -14,7 +14,7 @@ includelib msvcrt.lib
 includelib dasm.lib
 
 .const
-MY_MSG					db	"Test", 0dh, 0ah, 0
+MY_MSG				db	"Test", 0dh, 0ah, 0
 MY_OPEN_PROCESS			db	"TestDebug.exe", 0	; 
 CREATEPROCESS_ERROR		db	"CreateProcess Error，", 0
 CREATEPROCESS_OK		db	"[Tips]：CreateProcess OK", 0dh, 0ah, 0
@@ -28,16 +28,16 @@ READPROCESSMEMORY_ERROR	db	"ReadProcessMemory Error", 0
 WRITEPROCESSMEMORY_ERROR	db	"WriteProcessMemory Error", 0
 VIRTUALPROTECTEX_ERROR		db	"VirtualProtectEx Error", 0
 MYREADPROCESSMEMORY_ERROR	db	"MyReadProcessMemory Error", 0
-CREATEFILE_ERROR			db	"CreateFile Error", 0
-WRITEFILE_ERROR				db	"WriteFile Error", 0
-READFILE_ERROR				db	"ReadFile Error", 0
+CREATEFILE_ERROR		db	"CreateFile Error", 0
+WRITEFILE_ERROR			db	"WriteFile Error", 0
+READFILE_ERROR			db	"ReadFile Error", 0
 MYVIRTUALPROTECTEX_ERROR	db	"MyVirtualProtectEx Error", 0
 MYWRITEPROCESSMEMORY_ERROR	db	"MyWriteProcessMemory Error", 0
 
 ; 显示字符串
 DISPLAY_DISASSEMBLY_CODE	db	"%08x", 09h, "%s", 0dh, 0ah, 0
-SZBUFF_FMT		db	"%s", 0dh, 0ah, 0
-SZBUFF_FMT1		db	"%d", 0dh, 0ah, 0
+SZBUFF_FMT			db	"%s", 0dh, 0ah, 0
+SZBUFF_FMT1			db	"%d", 0dh, 0ah, 0
 SZBUFF_NO_RN_FMT		db	"%s", 0	; 没有回车换行
 CREATE_THREAD_FMT		db	"[CREATE_THREAD_DEBUG_EVENT]：hThread：%p，lpStartAddress：%p，lpThreadLocalBase：%p", 0dh, 0ah, 0
 CREATE_PROCESS_FMT		db	"[CREATE_PROCESS_DEBUG_EVENT]：hProcess：%p，lpBaseOfImage：%p，lpStartAddress：%p", 0dh, 0ah, 0
@@ -85,15 +85,15 @@ TIPS_DEBUG_HELPS	db	"[Tips]：输入 <?> 查看调试器命令帮助说明", 0dh, 0ah
 			db	"[Tips]：第一次输入 <g> 暂停到被调试程序的入口位置", 0dh, 0ah, 0
 
 INPUT_COMMAND		db	"[cmd]：", 0	; 提示输入命令调试程序
-DIVISION			db 	" ", 0			; 分割字符串
+DIVISION		db 	" ", 0			; 分割字符串
 SRTTOK_IMPORT_SCRIPT	db	'0dh', 0	; 导入脚本分割		
-COMMAND_SCRIPT			db	"script.txt", 0	; 保存输入的命令（脚本功能）
-MODULE_FILE				db	"Module_File.txt", 0	; 保存模块信息
-INPUT_COMMAND_FMT		db	"%s", 0dh, 0ah, 0
+COMMAND_SCRIPT	db	"script.txt", 0	; 保存输入的命令（脚本功能）
+MODULE_FILE	db	"Module_File.txt", 0	; 保存模块信息
+INPUT_COMMAND_FMT	db	"%s", 0dh, 0ah, 0
 
 ; 显示内存数据相关
 SHOW_HEX_MEMORY_DATA	db	"%.2x ", 0	; 显示十六进制数据
-SHOW_HEX_DIVISION		db	"- ", 0		; 显示十六进制数据时的分割符
+SHOW_HEX_DIVISION	db	"- ", 0		; 显示十六进制数据时的分割符
 SHOW_HEX_SZBUFF_S_FMT	db	"%s", 0
 SHOW_HEX_SZBUFF_P_FMT	db	"%p ", 0
 SHOW_HEX_SZBUFF_C_FMT	db	"%c", 0
@@ -119,51 +119,51 @@ TRACK_FILE_NAME			db	"%p-%p.txt", 0
 
 ; debug 命令
 COMMAND_DISPLAY_ASSEMBLY	db	"u", 0	; 显示汇编
-COMMAND_RUN		db	"gg", 0	; 运行
-COMMAND_STEP	db	"tt", 0	; 单步执行一条指令就显示运行结果（单步步入）
-COMMAND_P		db	"p", 0		; 单步步过
+COMMAND_RUN			db	"gg", 0	; 运行
+COMMAND_STEP			db	"tt", 0	; 单步执行一条指令就显示运行结果（单步步入）
+COMMAND_P			db	"p", 0		; 单步步过
 COMMAND_BREAKPOINT		db	"bp", 0	; 断点
 COMMAND_QUIT			db	"q", 0	; 退出调试
-COMMAND_SHOW_REGISTER			db	"r", 0	; 显示寄存器的值
-COMMAND_MEMORY_BREAKPOINT 		db	"bm", 0	; 内存断点
-COMMAND_HARDWARE_BREAKPOINT		db	"bh", 0	; 硬件断点
+COMMAND_SHOW_REGISTER		db	"r", 0	; 显示寄存器的值
+COMMAND_MEMORY_BREAKPOINT	db	"bm", 0	; 内存断点
+COMMAND_HARDWARE_BREAKPOINT	db	"bh", 0	; 硬件断点
 COMMAND_HELP			db	"?", 0	; 帮助
 COMMAND_MODULE_LIST		db	"ml", 0	; 查看模块列表
-COMMAND_EXPORT_SCRIPT	db	"es", 0	; 导出脚本
-COMMAND_IMPORT_SCRIPT	db	"ls", 0	; 导入脚本
+COMMAND_EXPORT_SCRIPT		db	"es", 0	; 导出脚本
+COMMAND_IMPORT_SCRIPT		db	"ls", 0	; 导入脚本
 COMMAND_MEMORY_DUMP		db	"dump", 0	; 内存 dump PE到文件
-COMMAND_DISPLAY_MEMORY_DATA		db	"dd", 0	; 显示内存数据
-COMMAND_EDIT_MEMORY_DATA		db	"em", 0	; 修改指定内存上对应的值
-COMMADN_EDIT_REGISTER_VALUE		db	"er", 0	; 修改执行寄存器的值
+COMMAND_DISPLAY_MEMORY_DATA	db	"dd", 0	; 显示内存数据
+COMMAND_EDIT_MEMORY_DATA	db	"em", 0	; 修改指定内存上对应的值
+COMMADN_EDIT_REGISTER_VALUE	db	"er", 0	; 修改执行寄存器的值
 COMMAND_GO_RETURN		db	"gr", 0		; 执行到返回
 COMMAND_TRACK			db	"track", 0	; 跟踪（指令记录）
 
 
 ; 硬件断点标志
 MY_DR7 struct
-	L0	byte ?
-	G0	byte ?
-	L1	byte ?
-	G1	byte ?
-	L2	byte ?
-	G2	byte ?
-	L3	byte ?
-	G3	byte ?
-	_LE	byte ?
-	_GE	byte ?
-	RE1	byte ?
+	L0 byte ?
+	G0 byte ?
+	L1 byte ?
+	G1 byte ?
+	L2 byte ?
+	G2 byte ?
+	L3 byte ?
+	G3 byte ?
+	_LE byte ?
+	_GE byte ?
+	RE1 byte ?
 	RTM byte ?
-	RE2	byte ?
-	GD	byte ?
-	RE3	WORD ?
-	RW0	WORD ?
-	LEN0	WORD ?
-	RW1		WORD ?
-	LEN1	WORD ?
-	RW2		WORD ?
-	LEN2	WORD ?
-	RW3		WORD ?
-	LEN3	WORD ?
+	RE2 byte ?
+	GD byte ?
+	RE3 WORD ?
+	RW0 WORD ?
+	LEN0 WORD ?
+	RW1 WORD ?
+	LEN1 WORD ?
+	RW2 WORD ?
+	LEN2 WORD ?
+	RW3 WORD ?
+	LEN3 WORD ?
 MY_DR7 ends
 
 ; 标志寄存器
@@ -181,7 +181,7 @@ FLAGS_REGISTER ends
 
 ; 被调试进程的信息
 DEBUG_PROCESS_INFO struct
-	hModule HANDLE ?		; 模块句柄
+	hModule HANDLE ?	; 模块句柄
 	dwModuleSize DWORD ?	; 模块大小
 DEBUG_PROCESS_INFO ends
 
@@ -224,13 +224,13 @@ g_dwTrackBeginAddr		dd	NULL	; 保存跟踪的起始地址
 g_dwTrackEndAddr		dd	NULL	; 保存跟踪的终止地址
 g_IsSaveTrackAsm		db	FALSE	; 是否保存跟踪时反汇编代码
 
-g_Falgs		FLAGS_REGISTER<1, 1, 1, 1, 1, 1, 1, 1, 1>
+g_Falgs	FLAGS_REGISTER<1, 1, 1, 1, 1, 1, 1, 1, 1>
 g_ModuleInfo		byte	4096	dup (?)	; 保存加载的模块信息
 g_ImportCmdScript	byte	1024	dup (?)	; 保存导出的脚本命令
 g_ExportCmdScript	byte	1024	dup (?)	; 保存导入的脚本命令
 g_szSectionsBuff	byte	200000	dup (?)	; 存储节表数据
 g_MemoryData		byte	4096	dup	(?)	; 用于存放代码的缓冲区
-g_ShowASM			byte	4096	dup	(?)	; 保存跟踪的反汇编代码
+g_ShowASM		byte	4096	dup	(?)	; 保存跟踪的反汇编代码
 g_SaveSoftwareBP	byte	1024	dup	(?)	; 保存软件断点
 
 .code
@@ -326,7 +326,7 @@ DisAsm proc uses ebx ecx dwAddress:dword, dwDisline:dword
 	LOCAL @context:CONTEXT	; 保存寄存器数据的结构体
 	LOCAL @szCodeBuff[1024]:byte	; 保存读取的内存数据
 	LOCAL @szAsmBuff[1024]:byte	; 保存解析后的反汇编的代码
-	LOCAL @eipAddress:dword	; 保存当前EIP的值
+	LOCAL @eipAddress:dword		; 保存当前EIP的值
 	LOCAL @dwReadBytes:dword	; 保存读取的字节数
 	LOCAL @dwPrintLine:dword	; 保存显示的反汇编行数
 	LOCAL @dwCode:dword				
@@ -739,7 +739,7 @@ OnCmdImportScript proc uses ebx ecx esi edi edx
 		mov ax, word ptr [esi]
 		.if ax == 0a0dh
 			;invoke wsprintf, addr @szBuff1, offset SZBUFF_FMT, [esi]
-			pushad		; 保存寄存器环境
+			pushad	; 保存寄存器环境
 			
 			lea ebx, @szBuff
 			mov edi, @TotalReadBuffSize
@@ -776,7 +776,7 @@ OnCmdImportScript proc uses ebx ecx esi edi edx
 			;invoke wsprintf, addr @szBuff2, offset SZBUFF_FMT1, @TotalReadBuffSize
 			;invoke crt_printf, addr @szBuff2
 			;invoke crt_memset, addr @szBuff2, 0, sizeof @szBuff2 
-			popad		; 恢复寄存器环境
+			popad	; 恢复寄存器环境
 		.endif
 		inc ecx
 		mov eax, @TotalReadBuffSize
@@ -1667,7 +1667,7 @@ OnCmdBP endp
 ;----------------------------------------------------------
 ; 函数功能：运行到指定地址
 ; 参数：
-; 		dwAddress -- 运行到的地址
+;	dwAddress -- 运行到的地址
 ;----------------------------------------------------------
 OnCmdGG proc dwAddress:dword
 	invoke SetBreakPoint, dwAddress
@@ -1792,7 +1792,7 @@ GetCommand proc pszCmdScript:PVOID
 			.if g_IsUserInput == FALSE
 				ret
 			.endif
-			.continue		; 跳过后面的汇编代码
+			.continue	; 跳过后面的汇编代码
 		.endif
 		; 运行（gg）
 		invoke crt_strncmp, addr @szInputBuff, offset COMMAND_RUN, 2
@@ -2180,7 +2180,7 @@ OnExecBreakPoint proc uses ebx
 			; 修改代码，在入口地址处写入int3
 			invoke WriteProcessMemory, @hProcess, g_BreakPointAddress, offset g_BreakPointOldCode, sizeof g_BreakPointOldCode, NULL
 			.if eax == NULL
-					invoke GetLastError
+				invoke GetLastError
 				invoke crt_printf, offset ERROR_CODES, offset WRITEPROCESSMEMORY_ERROR, eax
 				jmp ONEXCEBREAKPOINT_END
 			.endif
@@ -2228,7 +2228,7 @@ OnExecBreakPoint proc uses ebx
 			; 同时进制调试器在目标进程int3汇编代码上设置断点（bp）
 			; 设置单步，产生异常
 			.if g_IsOldCode == TRUE
-				invoke SetStep				; 还原代码
+				invoke SetStep	; 还原代码
 				mov g_IsNormalStep, FALSE
 				mov g_IsBpStep, TRUE	; 断步配合
 			.endif
@@ -2527,8 +2527,8 @@ OnCreateThread endp
 ;-----------------------------------
 ; 函数功能：获取指定字符在字符串中最后的下标位置
 ; 参数：
-;		pszFilePath -- 文件路径
-;		char -- 分割符
+;	pszFilePath -- 文件路径
+;	char -- 分割符
 ;-----------------------------------
 GetCharIdx proc uses ebx, pszFilePath:PVOID, char:byte
 	LOCAL @BuffLen:dword	; 文件路径的字符长度
@@ -2621,7 +2621,7 @@ OnLoadDll proc
 	LOCAL @szTest[MAX_PATH]:byte
 	LOCAL @lpBaseAddress:LPVOID
 	LOCAL @hProcess:HANDLE
-	LOCAL @dwContinueStatus:dword		; 异常处理返回值
+	LOCAL @dwContinueStatus:dword	; 异常处理返回值
 	
 	mov @dwContinueStatus, DBG_EXCEPTION_NOT_HANDLED
 	;invoke crt_printf, offset MY_MSG
@@ -2741,7 +2741,7 @@ BeginDebug proc uses ebx
 	LOCAL @si:STARTUPINFO
 	LOCAL @pi:PROCESS_INFORMATION
 	LOCAL @szBuff[256]:byte	; 缓冲区
-	;LOCAL @DebugEv:DEBUG_EVENT	; 保存调试事件的信息
+	;LOCAL @DebugEv:DEBUG_EVENT		; 保存调试事件的信息
 	LOCAL @dwContinueStatus:DWORD	; 设置异常条件（事件是否处理）
 	
 	mov @dwContinueStatus, DBG_CONTINUE	; 默认处理
@@ -2799,7 +2799,7 @@ BeginDebug proc uses ebx
 			mov @dwContinueStatus, eax
 		.endif
 		
-		; 允许调试器继续先前报告调试事件的线程(继续执行， DBG_EXCEPTION_NOT_HANDLED（不处理） 、DBG_CONTINUE（处理）)
+		; 允许调试器继续先前报告调试事件的线程(继续执行，DBG_EXCEPTION_NOT_HANDLED（不处理）、DBG_CONTINUE（处理）)
 		invoke ContinueDebugEvent, g_DebugEv.dwProcessId, g_DebugEv.dwThreadId, @dwContinueStatus
 	.endw
 	ret

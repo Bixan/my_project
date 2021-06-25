@@ -43,5 +43,6 @@ void CStudent::ShowStuData()
 		<< "姓名：" << m_szName << " "
 		<< "出生年份：" << m_nYear << " "
 		<< "出生月份" << m_nMonth << " "
-		<< "性别(1/男，2/女，3/其它，4/未知)：" << m_nSex << endl;
+		<< "性别(1/男，2/女，3/其它，4/未知)：" << m_nSex 
+		<< endl;
 }

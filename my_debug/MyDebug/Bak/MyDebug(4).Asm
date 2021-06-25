@@ -218,20 +218,20 @@ g_Division_n							db	0dh					; 分割换行字符
 g_IsEditRegisterData				db	FALSE				; 是否修改了寄存器数据
 g_IsSaveGoReturnAddr			db	FALSE				; 是否保存执行到返回的地址
 g_dwGoReturnAddr				dd	NULL				; 保存执行到返回的地址
-g_IsAutoTrack						db	FALSE				; 是否开启自动跟踪
-g_IsTrack								db	FALSE				; 是否开启跟踪
-g_dwTrackBeginAddr			dd	NULL				; 保存跟踪的起始地址
-g_dwTrackEndAddr				dd	NULL				; 保存跟踪的终止地址
+g_IsAutoTrack							db	FALSE				; 是否开启自动跟踪
+g_IsTrack									db	FALSE				; 是否开启跟踪
+g_dwTrackBeginAddr				dd	NULL				; 保存跟踪的起始地址
+g_dwTrackEndAddr					dd	NULL				; 保存跟踪的终止地址
 g_IsSaveTrackAsm					db	FALSE				; 是否保存跟踪时反汇编代码
 
 g_Falgs									FLAGS_REGISTER<1, 1, 1, 1, 1, 1, 1, 1, 1>
 g_ModuleInfo         				byte	4096 dup (?)		; 保存加载的模块信息
 g_ImportCmdScript		        byte	1024 dup (?)		; 保存导出的脚本命令
-g_ExportCmdScript				byte	1024 dup (?)		; 保存导入的脚本命令
+g_ExportCmdScript					byte	1024 dup (?)		; 保存导入的脚本命令
 g_szSectionsBuff					byte	200000 dup (?)	; 存储节表数据
 g_MemoryData						byte	4096	dup	(?)		; 用于存放代码的缓冲区
 g_ShowASM							byte	4096 dup	(?)		; 保存跟踪的反汇编代码
-g_SaveSoftwareBP				byte	1024	dup	(?)		; 保存软件断点
+g_SaveSoftwareBP					byte	1024	dup	(?)		; 保存软件断点
 
 .code
 ;---------------------------------------

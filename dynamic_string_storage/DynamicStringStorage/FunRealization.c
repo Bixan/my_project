@@ -3,6 +3,7 @@
 
 // 指定数组的大小空间为：1024 * 1024 字节
 char g_szBuf[1024 * 1024] = { 0 };
+
 // 记录内存中存储的字符串数量
 int g_nCount = 0;
 
@@ -13,14 +14,14 @@ int g_nCount = 0;
 */
 int StartProgram()
 {
-	int nNumber = 0;	// 记录用户输入的数字
-	int nStatus = 0;	// 记录scanf()的返回值
+	int nNumber = 0; // 记录用户输入的数字
+	int nStatus = 0; // 记录scanf()的返回值
 	while (1)
 	{
 		system("cls");
 		ProBeginMenu();	// 显示功能菜单
 		rewind(stdin);
-		nStatus = scanf("%d", &nNumber);	// 输入是数字返回1，反之返回0
+		nStatus = scanf("%d", &nNumber); // 输入是数字返回1，反之返回0
 		// 根据scanf返回值作判定，如果输入的数值不是一个整数，提示相应的错误信息
 		if (nStatus == 0)
 		{
@@ -156,11 +157,11 @@ int IncreaseString()
 				g_nCount = nCount;
 				g_szBuf[i + 1] = g_nCount;
 			}
-			strcpy(&g_szBuf[i + 2], szTempString);	// 将输入的字符串拷贝到指定的内存块中去
+			strcpy(&g_szBuf[i + 2], szTempString); // 将输入的字符串拷贝到指定的内存块中去
 			printf("字符串 %s 添加成功\r\n", &g_szBuf[i + 2]);
 			return 0;
 		}
-		nCount = nCount + 1;	// 循环一次，计数加一
+		nCount = nCount + 1; // 循环一次，计数加一
 	}
 	printf("字符串 %s 添加失败\r\n", szTempString);
 	return -1;
@@ -170,14 +171,14 @@ int IncreaseString()
 该函数的功能为：字符串删除功能
 返回值：
 	return 0 字符串删除成功
-	return -1字符串删除失败
-参数：	无
+	return -1 字符串删除失败
+参数：无
 */
 int DeleteString()
 {
 	int i = 0;
 	char szTempString[100] = { 0 };	// 保存用户输入的临时数据
-	ShowString();	// 显示内存中已存在的字符串
+	ShowString(); // 显示内存中已存在的字符串
 	printf("请输入您要删除的字符串：");
 	rewind(stdin);
 	fgets(szTempString, 99, stdin);
@@ -215,13 +216,13 @@ int DeleteString()
 返回值：
 	return 0  字符串修改成功
 	return -1 字符串修改失败
-参数：	无
+参数：无
 */
 int ReviseString()
 {
 	int i = 0;
 	char szTempString[100] = { 0 };	// 保存用户输入的临时数据
-	ShowString();	// 显示字符串菜单
+	ShowString(); // 显示字符串菜单
 	printf("请输入你要修改的字符串：");
 	rewind(stdin);
 	fgets(szTempString, 99, stdin);
@@ -265,7 +266,7 @@ int ReviseString()
 /*
 该函数的功能为：字符串查询菜单
 返回值：无
-参数：	 无
+参数：无
 */
 void InquireMenu()
 {
@@ -286,12 +287,12 @@ void InquireMenu()
 */
 int InquireString()
 {
-	int nInNumber = 0;	// 记录用户输入的数值
-	int nRetValue = 0;	// 记录scanf函数的返回值
+	int nInNumber = 0; // 记录用户输入的数值
+	int nRetValue = 0; // 记录scanf函数的返回值
 	while (1)
 	{
 		system("cls");
-		InquireMenu();	// 显示功能菜单
+		InquireMenu(); // 显示功能菜单
 		printf("请输入 0~2 进行相应功能的操作：");
 		rewind(stdin);
 		nRetValue = scanf("%d", &nInNumber);
@@ -341,11 +342,11 @@ int InquireString()
 }
 
 /*
-该函数的功能为：查询内存中是否存在所要查询的字符串，
-	由于是精确查询，所以需要用户输入要查询的字符串全部字符
+该函数的功能为：查询内存中是否存在所要查询的字符串，由于是精确查询，
+	所以需要用户输入要查询的字符串全部字符
 返回值：
 	return 0 查询成功
-参数：	无
+参数：无
 */
 int StrPerciseInquire()
 {
@@ -375,16 +376,16 @@ int StrPerciseInquire()
 }
 
 /*
-该函数的功能为：模糊查询，输出在内存中含有 用户输入指定字符 的字符串
+该函数的功能为：模糊查询，输出在内存中含有用户输入指定字符的字符串
 返回值：
 	return 0 查询成功
-参数：	无
+参数：无
 */
 int StrFuzzyInquire()
 {
 	int i = 0;
-	char* strPosition = NULL;	// 用于记录对应的字符在字符串中出现的位置
-	char szTempString[100] = { 0 };	// 保存用户输入的字符串，该数组的值时可以随之变得的
+	char* strPosition = NULL; // 用于记录对应的字符在字符串中出现的位置
+	char szTempString[100] = { 0 }; // 保存用户输入的字符串，该数组的值时可以随之变得的
 	printf("请输入你要查询的字符串：");
 	rewind(stdin);
 	fgets(szTempString, 99, stdin);
@@ -413,7 +414,7 @@ int StrFuzzyInquire()
 /*
 该函数的功能为：显示内存中已经存储的字符串
 返回值：无
-参数：	 无
+参数：无
 */
 void ShowString()
 {
@@ -431,22 +432,21 @@ void ShowString()
 }
 
 /*
-该函数的功能为：统计输入的字符串内的字母（分大小写）、数字出现的次数，
-	及占总次数的比率
+该函数的功能为：统计输入的字符串内的字母（分大小写）、数字出现的次数，及占总次数的比率
 返回值：无
-参数：	 无
+参数：无
 */
 void ShowStringRatio()
 {
 	int i = 0;
 	int j = 0;
-	int nTotalCount = 0;	// 大小写字母及数字出现的总次数
-	int nLettersLarge[26] = { 0 };	// 用于存储 26 个大写字母
-	int nLettersSmall[26] = { 0 };	// 用于存储 26 个小写字母
+	int nTotalCount = 0; // 大小写字母及数字出现的总次数
+	int nLettersLarge[26] = { 0 }; // 用于存储 26 个大写字母
+	int nLettersSmall[26] = { 0 }; // 用于存储 26 个小写字母
 	int nNumbers[10] = { 0 };	// 用于存储 10 个数字
 	int nLetsLarge = 0;	// 遍历内存中存储的26个大写字母
 	int nLetsSmall = 0;	// 遍历内存中存储的26个小写字母
-	int nNums = 0;		// 遍历内存中存储的10个数字
+	int nNums = 0; // 遍历内存中存储的10个数字
 
 	for (i = 0; i < sizeof(g_szBuf); i += (BLOCK_SIZE + 1))
 	{
@@ -480,32 +480,38 @@ void ShowStringRatio()
 	}
 	printf("******************* 内存中存储的字符、数字出现次数及比率 *******************\r\n");
 	printf("字符及数字  出现次数  占总数的比率\r\n");
+
 	// 遍历内存中各大写字母出现的次数及所占比率，将内存中大写字母数量大于0的输出
 	for (nLetsLarge = 0; nLetsLarge <= 26; nLetsLarge++)
 	{
 		if (nLettersLarge[nLetsLarge] > 0)
 		{
-			printf("   %c：\t\t%d  \t%.2lf%%\r\n", 'A' + nLetsLarge, 
+			printf("   %c：\t\t%d  \t%.2lf%%\r\n", 
+				'A' + nLetsLarge, 
 				nLettersLarge[nLetsLarge],
 				((double)nLettersLarge[nLetsLarge] / nTotalCount) * 100);
 		}
 	}
+
 	// 遍历内存中各小写字母出现的次数及所占比率，将内存中小写字母数量大于0的输出
 	for (nLetsSmall = 0; nLetsSmall <= 26; nLetsSmall++)
 	{
 		if (nLettersSmall[nLetsSmall] > 0)
 		{
-			printf("   %c：\t\t%d  \t%.2lf%%\r\n", 'a' + nLetsSmall, 
+			printf("   %c：\t\t%d  \t%.2lf%%\r\n", 
+				'a' + nLetsSmall, 
 				nLettersSmall[nLetsSmall],
 				((double)nLettersSmall[nLetsSmall] / nTotalCount) * 100);
 		}
 	}
+
 	// 遍历内存中各数字出现的次数及所占比率，将内存中数字数量大于0的输出
 	for (nNums = 0; nNums <= 9; nNums++)
 	{
 		if (nNumbers[nNums] > 0)
 		{
-			printf("   %c：\t\t%d  \t%.2lf%%\r\n", '0' + nNums, 
+			printf("   %c：\t\t%d  \t%.2lf%%\r\n", 
+				'0' + nNums, 
 				nNumbers[nNums],
 				((double)nNumbers[nNums] / nTotalCount) * 100);
 		}
@@ -529,11 +535,11 @@ void ShowMemoryFootprint()
 		// 遍历内存，查看内存块是否使用
 		if (g_szBuf[i] == USED_BLOCKSPACE)
 		{
-			printf("U");	// 将已使用的内存块用字符 U 表示
+			printf("U"); // 将已使用的内存块用字符 U 表示
 		}
 		else
 		{
-			printf("F");	// 将未使用的内存块用字符 F 表示
+			printf("F"); // 将未使用的内存块用字符 F 表示
 		}
 	}
 	printf("\n\n*****************************************************************************\r\n\n");
@@ -542,12 +548,12 @@ void ShowMemoryFootprint()
 /*
 该函数的功能为：对内存中的空位置进行碎片整理，根据内存中存储的数据对其重新编号
 返回值：无
-参数：	 无
+参数：无
 */
 void Defragmentation()
 {
 	int i = 0;
-	int nNoBlock = 0;	// 记录未使用的块
+	int nNoBlock = 0; // 记录未使用的块
 	int nCount = 1;	// 记录循环次数
 	for (i = 0; i < sizeof(g_szBuf); i += (BLOCK_SIZE + 1))
 	{

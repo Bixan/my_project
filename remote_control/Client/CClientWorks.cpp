@@ -57,7 +57,7 @@ BOOL CClientWorks::StartClient(char *szIpAddr, USHORT sProt)
 	cout << "[Client]: 客户端与服务器连接成功" << endl;
 	m_QuitFlag = true;
 
-	//创建线程，发送心跳包
+	// 创建线程，发送心跳包
 	HANDLE hThread = CreateThread(NULL, 0, HeartThread, this, 0, NULL);
 	CloseHandle(hThread);
 
@@ -75,7 +75,7 @@ BOOL CClientWorks::StartClient(char *szIpAddr, USHORT sProt)
 		break;
 	}
 
-	//	解析数据
+	// 解析数据
 	ParserCommand(ph);
 	}
 
@@ -113,24 +113,28 @@ void CClientWorks::ParserCommand(PACKETHEAD ph)
 {
 	switch (ph.m_nCmd)
 	{
-	case PK_GET_DES_DRIVE:// 驱动器
+	case PK_GET_DES_DRIVE:
 	{
+		// 驱动器
 		// 获取文件磁盘
 		ParserGetDrive();
 		break;
 	}
-	case PK_GET_FOLDER_NEXT_DATA: // 获取下一层文件夹
+	case PK_GET_FOLDER_NEXT_DATA:
 	{
+		// 获取下一层文件夹
 		ParserGetNextFolder(ph);
 		break;
 	}
-	case PK_GET_FOLDER_PREV_DATA: // 获取上一层文件夹
+	case PK_GET_FOLDER_PREV_DATA:
 	{
+		// 获取上一层文件夹
 		ParserGetPrevFolder(ph);
 		break;
 	}
-	case PK_DOWN_IS_FILE: // 文件下载
+	case PK_DOWN_IS_FILE:
 	{
+		// 文件下载
 		ParserDownloadIsFile(ph);
 		break;
 	}
@@ -182,8 +186,9 @@ void CClientWorks::ParserCommand(PACKETHEAD ph)
 		ParserSetClientMousePoint(ph);
 		break;
 	}
-	case PK_QUIT_CLIENT_SCREEN: // 屏幕结束
+	case PK_QUIT_CLIENT_SCREEN:
 	{
+		// 屏幕结束
 		cout << "[Client]: 服务器退出屏幕监控" << endl;
 		break;
 	}
@@ -618,7 +623,7 @@ void CClientWorks::ParserBeginDownFile(PACKETHEAD ph)
 
 	// 发送文件大小
 	PACKETHEAD SendFileSizeph;
-	SendFileSizeph.m_nCmd = PK_GET_FILE_SIZE;	 // 向服务器发送所下载文件的总字节大小
+	SendFileSizeph.m_nCmd = PK_GET_FILE_SIZE; // 向服务器发送所下载文件的总字节大小
 	SendFileSizeph.m_nLen = 0;
 
 	m_cs.EnterCS();

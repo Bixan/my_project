@@ -448,7 +448,7 @@ void CMessages::ParserGetFileSize()
 	PLARGE_INTEGER pSize = new LARGE_INTEGER();
 	ZeroMemory(pSize, sizeof(LARGE_INTEGER));
 
-	//接收数据
+	// 接收数据
 	int nRet = m_Socket.Recv(m_ClientSocket, (char*)pSize, sizeof(PLARGE_INTEGER));
 
 	if (nRet <= 0)

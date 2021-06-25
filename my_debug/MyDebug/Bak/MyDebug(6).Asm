@@ -103,40 +103,40 @@ SHOW_HEX_SZBUFF_POINT_FMT		db	".", 0
 SCRIPT_EXPORT_OK							db	"[Tips]：脚本导出成功", 0
 SCRIPT_IMPORT_OK							db	"[Tips]：脚本导入成功", 0
 SCRIPT_IMPORT_TIPS						db	"[Tips]：脚本命令 --> [%s]", 0dh, 0ah, 0
-MEMORY_DUMP_OK_TIPS				db	"[Tips]：内存dump成功", 0
+MEMORY_DUMP_OK_TIPS					db	"[Tips]：内存dump成功", 0
 MEMORY_DUMP_ERROR_TIPS			db	"[Tips]：内存dump失败", 0
-DUMP_ERROR									db	"[Tips]：当前拷贝的节区数据过大，请检缓冲区的大小", 0
+DUMP_ERROR										db	"[Tips]：当前拷贝的节区数据过大，请检缓冲区的大小", 0
 EDIT_MEMORY_DATA_OK_TIPS			db	"[Tips]：内存修改成功", 0
 EDIT_MEMORY_DATA_ERROR_TIPS	db	"[Tips]：内存修改失败", 0
 EDIT_INPUT_MEMORY_ERROR			db	"[Tips]：修改后的内存数据输入格式错误，请输入一个十六进制的内存数据（2个字符）", 0
 EDIT_INPUT_REGISTER_NAME_ERR	db	"[Tips]：输入要修改寄存器的名称错误", 0
 
-EXECUTION_TO_RETURN_OK			db	"[Tips]：执行到返回地址保存成功，运行<gg>命令即可运行到返回地址", 0
+EXECUTION_TO_RETURN_OK				db	"[Tips]：执行到返回地址保存成功，运行<gg>命令即可运行到返回地址", 0
 EXECUTION_TO_RETURN_ERROR		db	"[Tips]：不满足执行到返回地址，当前需要在执行call指令后才可", 0
 TRACK_END_ADDR_NULL					db	"[Tips]：跟踪的结束地址为空", 0
-TRACK_OK										db	"[Tips]：跟踪完成，数据已保存到 %p-%p.txt 中", 0dh, 0ah, 0
-TRACK_FILE_NAME							db	"%p-%p.txt", 0
+TRACK_OK											db	"[Tips]：跟踪完成，数据已保存到 %p-%p.txt 中", 0dh, 0ah, 0
+TRACK_FILE_NAME								db	"%p-%p.txt", 0
 
 ; debug 命令
 COMMAND_DISPLAY_ASSEMBLY			db	"u", 0	; 显示汇编
 COMMAND_RUN									db	"gg", 0	; 运行
 COMMAND_STEP									db	"tt", 0	; 单步执行一条指令就显示运行结果（单步步入）
-COMMAND_P										db	"p", 0	; 单步步过
+COMMAND_P											db	"p", 0	; 单步步过
 COMMAND_BREAKPOINT						db	"bp", 0	; 断点
 COMMAND_QUIT									db	"q", 0	; 退出调试
 COMMAND_SHOW_REGISTER				db	"r", 0		; 显示寄存器的值
 COMMAND_MEMORY_BREAKPOINT 	db	"bm", 0	; 内存断点
 COMMAND_HARDWARE_BREAKPOINT	db	"bh", 0	; 硬件断点
-COMMAND_HELP									db	"?", 0	; 帮助
-COMMAND_MODULE_LIST					db	"ml", 0	; 查看模块列表
-COMMAND_EXPORT_SCRIPT				db	"es", 0	; 导出脚本
-COMMAND_IMPORT_SCRIPT				db	"ls", 0	; 导入脚本
-COMMAND_MEMORY_DUMP				db	"dump", 0		; 内存 dump PE到文件
-COMMAND_DISPLAY_MEMORY_DATA	db	"dd", 0			; 显示内存数据
-COMMAND_EDIT_MEMORY_DATA		db	"em", 0	; 修改指定内存上对应的值
-COMMADN_EDIT_REGISTER_VALUE		db	"er", 0	; 修改执行寄存器的值
-COMMAND_GO_RETURN						db	"gr", 0	; 执行到返回
-COMMAND_TRACK								db	"track", 0		; 跟踪（指令记录）
+COMMAND_HELP										db	"?", 0	; 帮助
+COMMAND_MODULE_LIST						db	"ml", 0	; 查看模块列表
+COMMAND_EXPORT_SCRIPT						db	"es", 0	; 导出脚本
+COMMAND_IMPORT_SCRIPT					db	"ls", 0	; 导入脚本
+COMMAND_MEMORY_DUMP					db	"dump", 0		; 内存 dump PE到文件
+COMMAND_DISPLAY_MEMORY_DATA		db	"dd", 0			; 显示内存数据
+COMMAND_EDIT_MEMORY_DATA			db	"em", 0	; 修改指定内存上对应的值
+COMMADN_EDIT_REGISTER_VALUE			db	"er", 0	; 修改执行寄存器的值
+COMMAND_GO_RETURN							db	"gr", 0	; 执行到返回
+COMMAND_TRACK									db	"track", 0		; 跟踪（指令记录）
 
 
 ; 硬件断点标志

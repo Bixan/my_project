@@ -15,13 +15,13 @@ int g_nChineseCharCount = 0;
 int StartProgram()
 {
 	// FormattedData();
-	int nNumber = 0;  // 记录用户输入的数字
-	int nStatus = 0;	// 记录scanf()的返回值
+	int nNumber = 0; // 记录用户输入的数字
+	int nStatus = 0; // 记录scanf()的返回值
 	while (1)
 	{
 		system("cls");
 		Menu(); // 显示功能菜单
-		nStatus = scanf("%d", &nNumber);	// 输入是数字返回1，反之返回0
+		nStatus = scanf("%d", &nNumber); // 输入是数字返回1，反之返回0
 		rewind(stdin);
 		// 根据scanf返回值作判定，如果输入的数值不是一个整数，提示相应的错误信息
 		if (nStatus == 0)
@@ -227,11 +227,11 @@ EXIT_SHDOFILE:
 */
 int IncreaseData()
 {
-	int nTempAge = 0;	// 保存用户输入的联系人年龄
-	int nStatus = 0;	// 记录scanf()的返回值
+	int nTempAge = 0; // 保存用户输入的联系人年龄
+	int nStatus = 0; // 记录scanf()的返回值
 	FILE* fp = NULL;
 
-	fp = fopen("data.bin", "rb+");	// 判断文件是否存在，且是否打开成功
+	fp = fopen("data.bin", "rb+"); // 判断文件是否存在，且是否打开成功
 	if (fp == NULL)
 	{
 		printf("文件打开失败，请检查文件是否存在！\r\n");
@@ -256,7 +256,7 @@ int IncreaseData()
 		// 判断当前数据是否为使用
 		if (perInfo.enDataType == unusedData)
 		{
-			printf("请输入你要存储联系人的姓名：");	// 用户输入
+			printf("请输入你要存储联系人的姓名："); // 用户输入
 			fgets(perInfo.szName, 32, stdin);
 			rewind(stdin);
 			// 处理字符串后面的 '\n'
@@ -333,9 +333,9 @@ EXIT_SHDOFILE:
 */
 int DeleteData()
 {
-	char szTempName[32] = { 0 };	// 保存用户要删除联系人的姓名
+	char szTempName[32] = { 0 }; // 保存用户要删除联系人的姓名
 	char szTempTel[12] = { 0 };	// 保存用户要删除联系人的手机号码
-	int nTempAge = 0;		// 保存用户要删除联系人的年龄
+	int nTempAge = 0; // 保存用户要删除联系人的年龄
 	char szTag[2] = { 0 };
 	FILE* fp = NULL;
 	fp = fopen("data.bin", "rb+");
@@ -461,7 +461,7 @@ EXIT_SHDOFILE:
 */
 int ReviseData()
 {
-	char szTempName[32] = { 0 };  // 保存用户要修改联系人的姓名
+	char szTempName[32] = { 0 }; // 保存用户要修改联系人的姓名
 	char szTempTel[12] = { 0 }; // 保存用户要修改联系人的手机号码
 	int nTempAge = 0; // 保存用户要修改联系人的年龄
 	char szTag[2] = { 0 };
@@ -510,7 +510,7 @@ int ReviseData()
 		exit(ferror(fp));
 	}
 
-	printf("请输入你要修改的联系人姓名：");	// 用户输入
+	printf("请输入你要修改的联系人姓名："); // 用户输入
 	fgets(szTempName, 32, stdin);
 	rewind(stdin);
 	// 处理字符串后面的 '\n'
@@ -628,7 +628,7 @@ int ShowData()
 
 	// 记录输入联系人的中文名
 	fpChinese = fopen("ChineseChar.bin", "rb+");
-	if (fpChinese == NULL)	  // 判断文件 ChineseChar.bin 是否打开成功，且是否为空
+	if (fpChinese == NULL) // 判断文件 ChineseChar.bin 是否打开成功，且是否为空
 	{
 		printf("文件打开失败，请检查文件是否存在\r\n");
 		exit(-1);
@@ -700,7 +700,7 @@ EXIT_SHDOFILE:
 	}
 	if (fpChinese)
 	{
-		fclose(fpChinese);	// 关闭文件
+		fclose(fpChinese); // 关闭文件
 		fpChinese = NULL;
 	}
 	return 0;
@@ -730,9 +730,9 @@ void InquireMenu()
 */
 int PerciseQueryContactData()
 {
-	char szTempName[32] = { 0 };	// 保存用户输入的联系人的姓名
+	char szTempName[32] = { 0 }; // 保存用户输入的联系人的姓名
 	char szTempTel[12] = { 0 };	// 保存用户输入的联系人的手机号码
-	int nTempAge = 0;		// 保存用户输入的联系人的年龄
+	int nTempAge = 0; // 保存用户输入的联系人的年龄
 	FILE* fp = NULL;
 	fp = fopen("data.bin", "rb+");
 	// 判断文件是否打开成功
@@ -788,7 +788,7 @@ int PerciseQueryContactData()
 			if ((perInfo.nAge == nTempAge) && (strcmp(perInfo.szName, szTempName) == 0)
 				&& (strcmp(perInfo.szTel, szTempTel) == 0))
 			{
-				printf("姓名：");	// 在控制台显示查找到的数据信息，没有显示，表示文件内没有对应的数据
+				printf("姓名："); // 在控制台显示查找到的数据信息，没有显示，表示文件内没有对应的数据
 				printf(perInfo.szName);
 				printf("\t\t");
 				printf("年龄：%d\t", perInfo.nAge);
@@ -815,9 +815,9 @@ EXIT_SHDOFILE:
 */
 int FuzzyInquireContactData()
 {
-	char szTempName[32] = { 0 };	// 保存用户输入的联系人姓名
+	char szTempName[32] = { 0 }; // 保存用户输入的联系人姓名
 	char szTempTel[12] = { 0 };
-	char* strPosition = NULL;		// 用于记录对应的字符在字符串中出现的位置
+	char* strPosition = NULL; // 用于记录对应的字符在字符串中出现的位置
 	FILE* fp = NULL;
 	fp = fopen("data.bin", "rb+");
 	// 判断文件是否打开成功
@@ -869,7 +869,7 @@ int FuzzyInquireContactData()
 			strPosition = strstr(perInfo.szName, szTempName);
 			if (strPosition != NULL)
 			{
-				printf("姓名：");	// 在控制台显示查找到的数据信息，没有显示，表示文件内没有对应的数据
+				printf("姓名："); // 在控制台显示查找到的数据信息，没有显示，表示文件内没有对应的数据
 				printf(perInfo.szName);
 				printf("\t\t");
 				printf("年龄：%d\t", perInfo.nAge);
@@ -895,16 +895,16 @@ EXIT_SHDOFILE:
 */
 int InquireData()
 {
-	int nInNumber = 0;	// 记录用户输入的数值
-	int nRetValue = 0;	// 记录scanf函数的返回值
+	int nInNumber = 0; // 记录用户输入的数值
+	int nRetValue = 0; // 记录scanf函数的返回值
 	while (1)
 	{
 		system("cls");
-		InquireMenu();	// 显示功能菜单
+		InquireMenu(); // 显示功能菜单
 		printf("请输入 0~2 进行相应功能的操作：");
 		nRetValue = scanf("%d", &nInNumber);
 		rewind(stdin);
-		if (nRetValue == 0)	// 根据scanf返回值最相应的判断
+		if (nRetValue == 0) // 根据scanf返回值最相应的判断
 		{
 			printf("您输入的输入有误，查询程序即将退出...\r\n");
 			break;
@@ -927,10 +927,10 @@ int InquireData()
 				switch (nInNumber)
 				{
 				case 1:
-					PerciseQueryContactData();	// 精确查找
+					PerciseQueryContactData(); // 精确查找
 					break;
 				case 2:
-					FuzzyInquireContactData();	// 模糊查询
+					FuzzyInquireContactData(); // 模糊查询
 					break;
 				default:
 					printf("您输入的信息不对，请重新输入\r\n");
@@ -952,9 +952,9 @@ int InquireData()
 */
 CHINESECHAR* queryWords(char* szTempWord, CHINESECHAR* fileHead)
 {
-	int nTag = 1;	// 标记默认为中文
+	int nTag = 1; // 标记默认为中文
 	CHINESECHAR* pChineseChar = NULL;
-	pChineseChar = fileHead;	// 指向结构体变量fileHead
+	pChineseChar = fileHead; // 指向结构体变量fileHead
 	// 当pTemp为空nTag为1，循环结束
 	while (pChineseChar != NULL && nTag == 1)
 	{
@@ -981,7 +981,7 @@ CHINESECHAR* queryWords(char* szTempWord, CHINESECHAR* fileHead)
 	{
 		// 如果nTag为不为1，结构体变量pTemp指向结构体变量fileHead
 		pChineseChar = fileHead;
-		fileHead = (CHINESECHAR*)malloc(sizeof(CHINESECHAR));  // 分配空间存储对应的汉字信息
+		fileHead = (CHINESECHAR*)malloc(sizeof(CHINESECHAR)); // 分配空间存储对应的汉字信息
 		// 将该汉字copy到结构体变量对应的成员中
 		strcpy(fileHead->szWord, szTempWord);
 		fileHead->nCount = 1;	// 次数置为1
@@ -1002,7 +1002,7 @@ CHINESECHAR* queryWords(char* szTempWord, CHINESECHAR* fileHead)
 int ShowDataChinese(int g_nCharCount)
 {
 	int i = 0;
-	char szTempWord[3];	 // 保存读取到的临时数据
+	char szTempWord[3]; // 保存读取到的临时数据
 	CHINESECHAR* fileHead = NULL;
 
 	FILE* fpChinese;
@@ -1035,7 +1035,7 @@ int ShowDataChinese(int g_nCharCount)
 
 	// 根据queryWords返回结果，输出对应的汉字信息
 	CHINESECHAR* pChinese = fileHead;
-	g_nChineseCharCount = 0;	// 每次从文件内读取有效的汉字个数时，将其置为0
+	g_nChineseCharCount = 0; // 每次从文件内读取有效的汉字个数时，将其置为0
 	while (pChinese != NULL)
 	{
 		// 读取文件内有效的汉字总个数
@@ -1044,11 +1044,13 @@ int ShowDataChinese(int g_nCharCount)
 	}
 	// 将结构体指针再次置于文件开头出
 	pChinese = fileHead;
-	g_nCharCount += g_nChineseCharCount;	// 将有效的汉字个数和有效的英文字符相加
+	g_nCharCount += g_nChineseCharCount; // 将有效的汉字个数和有效的英文字符相加
 	while (pChinese != NULL)
 	{
 		// 输出文件内有效的汉字，以及所占总字符数的比率
-		printf("%s:\t\t%d次   \t%.2lf%%\r\n", pChinese->szWord, pChinese->nCount,
+		printf("%s:\t\t%d次   \t%.2lf%%\r\n", 
+			pChinese->szWord, 
+			pChinese->nCount,
 			(((double)pChinese->nCount) / g_nCharCount) * 100);
 		pChinese = pChinese->next;
 	}
@@ -1071,13 +1073,13 @@ int ShowFileDataRatio()
 {
 	int i = 0;
 	int j = 0;
-	int nTotalCount = 0;	// 大小写字母及数字出现的总次数
-	int nLettersLarge[26] = { 0 };	// 用于存储 26 个大写字母
-	int nLettersSmall[26] = { 0 };	// 用于存储 26 个小写字母
-	int nNumbers[10] = { 0 };		// 用于存储 10 个数字
-	int nLetsLarge = 0;		// 遍历内存中存储的26个大写字母
-	int nLetsSmall = 0;		// 遍历内存中存储的26个小写字母
-	int nNums = 0;		// 遍历内存中存储的10个数字
+	int nTotalCount = 0; // 大小写字母及数字出现的总次数
+	int nLettersLarge[26] = { 0 }; // 用于存储 26 个大写字母
+	int nLettersSmall[26] = { 0 }; // 用于存储 26 个小写字母
+	int nNumbers[10] = { 0 }; // 用于存储 10 个数字
+	int nLetsLarge = 0; // 遍历内存中存储的26个大写字母
+	int nLetsSmall = 0; // 遍历内存中存储的26个小写字母
+	int nNums = 0; // 遍历内存中存储的10个数字
 
 	FILE* fp = NULL;
 	fp = fopen("data.bin", "rb+");
@@ -1156,7 +1158,7 @@ int ShowFileDataRatio()
 	printf("字符数据	 出现次数  占总数的比率\r\n");
 
 	g_nCharCount = nTotalCount;	// 将此时的文件内字符串的总数赋值为全局变量g_nCharCount
-	ShowDataChinese(g_nCharCount);  // 调用ShowDataChinese显示文件内中文的次数，以及所占比率
+	ShowDataChinese(g_nCharCount); // 调用ShowDataChinese显示文件内中文的次数，以及所占比率
 	g_nCharCount += g_nChineseCharCount;
 	nTotalCount = g_nCharCount;
 
@@ -1164,7 +1166,8 @@ int ShowFileDataRatio()
 	{
 		if (nLettersLarge[nLetsLarge] > 0)
 		{
-			printf("%c:\t\t%d次   \t%.2lf%%\r\n", 'A' + nLetsLarge, 
+			printf("%c:\t\t%d次   \t%.2lf%%\r\n", 
+				'A' + nLetsLarge, 
 				nLettersLarge[nLetsLarge],
 				((double)nLettersLarge[nLetsLarge] / nTotalCount) * 100);
 		}
@@ -1174,7 +1177,8 @@ int ShowFileDataRatio()
 	{
 		if (nLettersSmall[nLetsSmall] > 0)
 		{
-			printf("%c:\t\t%d次   \t%.2lf%%\r\n", 'a' + nLetsSmall, 
+			printf("%c:\t\t%d次   \t%.2lf%%\r\n", 
+				'a' + nLetsSmall, 
 				nLettersSmall[nLetsSmall],
 				((double)nLettersSmall[nLetsSmall] / nTotalCount) * 100);
 		}
@@ -1185,7 +1189,8 @@ int ShowFileDataRatio()
 		if (nNumbers[nNums] > 0)
 		{
 			printf("%c:\t\t%d次   \t%.2lf%%\r\n", 
-				'0' + nNums, nNumbers[nNums],
+				'0' + nNums, 
+				nNumbers[nNums],
 				((double)nNumbers[nNums] / nTotalCount) * 100);
 		}
 	}
@@ -1234,7 +1239,7 @@ int ShowMemoryFootprint()
 		if (perInfo.enDataType == usedData)
 		{
 			// printf("U");
-			int nUsed = 0;	// 用于显示文件内有效的联系人信息
+			int nUsed = 0; // 用于显示文件内有效的联系人信息
 			while (nUsed < 52)
 			{
 				printf("U");
@@ -1245,7 +1250,7 @@ int ShowMemoryFootprint()
 		else
 		{
 			// 将未使用的文件数据表示为F
-			int nUnused = 0;		// 用于显示文件内空的联系人信息
+			int nUnused = 0; // 用于显示文件内空的联系人信息
 			while (nUnused < 52)
 			{
 				printf("F");
@@ -1254,7 +1259,7 @@ int ShowMemoryFootprint()
 			printf("\r\n");
 			// printf("F");
 			nCount++;
-			if (nCount > 100)	  // 未使用数量超过5000的时候用 ...... 表示
+			if (nCount > 100) // 未使用数量超过5000的时候用 ...... 表示
 			{
 				printf("......\r\n");
 				break;
@@ -1279,8 +1284,8 @@ int Defragmentation()
 {
 	FILE* fp = NULL;
 	FILE* fpTemp = NULL;
-	fp = fopen("data.bin", "rb+");	// 打开保存联系人信息的文件
-	fpTemp = fopen("newdata.bin", "wb+");	// 用于存储联系人信息的临时文件
+	fp = fopen("data.bin", "rb+"); // 打开保存联系人信息的文件
+	fpTemp = fopen("newdata.bin", "wb+"); // 用于存储联系人信息的临时文件
 	if (fp == NULL)
 	{
 		// 判断文件是否打开成功
@@ -1294,11 +1299,8 @@ int Defragmentation()
 		exit(-1);
 	}
 	// 为保存联系人信息结构体定义一个变量名，并赋初值
-	TAGCONTACTS perInfo = {
-			unusedData, 
-			0, 
-			'\0', '\0'
-	};
+	TAGCONTACTS perInfo = { unusedData, 0, '\0', '\0'};
+
 	// 为临时保存联系人信息结构体定义一个变量名
 	TAGCONTACTS perInfoTemp;
 
@@ -1348,7 +1350,7 @@ EXIT_SHDOFILE:
 		fpTemp = NULL;
 	}
 	// 在关闭文件后将源文件进行删除
-	if (unlink("data.bin") == 0)	// 删除原文件
+	if (unlink("data.bin") == 0) // 删除原文件
 	{
 		// printf("源文件删除成功\r\n");
 	}

@@ -15,12 +15,12 @@ includelib dasm.lib
 
 .const
 MY_MSG											db	"Test", 0dh, 0ah, 0
-MY_OPEN_PROCESS							db	"TestDebug.exe", 0	; 
-CREATEPROCESS_ERROR					db	"CreateProcess Error，", 0
+MY_OPEN_PROCESS						db	"TestDebug.exe", 0	; 
+CREATEPROCESS_ERROR				db	"CreateProcess Error，", 0
 CREATEPROCESS_OK						db	"[Tips]：CreateProcess OK", 0dh, 0ah, 0
-WAITFORDEBUGEVENT_ERROR			db	"WaitForDebugEvent Error", 0
-ERROR_CODES 									db 	"[Tips]：%s，%08x", 0dh, 0ah, 0
-OPENPROCESS_ERROR						db	"OpenProcess Error", 0
+WAITFORDEBUGEVENT_ERROR		db	"WaitForDebugEvent Error", 0
+ERROR_CODES 								db 	"[Tips]：%s，%08x", 0dh, 0ah, 0
+OPENPROCESS_ERROR					db	"OpenProcess Error", 0
 OPENTHREAD_ERROR						db	"OpenThread Error", 0
 GETTHREADCONTEXT_ERROR			db	"GetThreadContext Error", 0
 SETTHREADCONTEXT_ERROR 			db	"SetThreadContext Error", 0
@@ -28,29 +28,29 @@ READPROCESSMEMORY_ERROR		db	"ReadProcessMemory Error", 0
 WRITEPROCESSMEMORY_ERROR		db	"WriteProcessMemory Error", 0
 VIRTUALPROTECTEX_ERROR				db	"VirtualProtectEx Error", 0
 MYREADPROCESSMEMORY_ERROR	db	"MyReadProcessMemory Error", 0
-CREATEFILE_ERROR							db	"CreateFile Error", 0
+CREATEFILE_ERROR								db	"CreateFile Error", 0
 WRITEFILE_ERROR								db	"WriteFile Error", 0
 READFILE_ERROR								db	"ReadFile Error", 0
-MYVIRTUALPROTECTEX_ERROR		db	"MyVirtualProtectEx Error", 0
+MYVIRTUALPROTECTEX_ERROR			db	"MyVirtualProtectEx Error", 0
 MYWRITEPROCESSMEMORY_ERROR	db	"MyWriteProcessMemory Error", 0
 
 ; 显示字符串
 DISPLAY_DISASSEMBLY_CODE			db	"%08x", 09h, "%s", 0dh, 0ah, 0
-SZBUFF_FMT					db	"%s", 0dh, 0ah, 0
-SZBUFF_FMT1					db	"%d", 0dh, 0ah, 0
-SZBUFF_NO_RN_FMT		db	"%s", 0	; 没有回车换行
+SZBUFF_FMT						db	"%s", 0dh, 0ah, 0
+SZBUFF_FMT1						db	"%d", 0dh, 0ah, 0
+SZBUFF_NO_RN_FMT			db	"%s", 0	; 没有回车换行
 CREATE_THREAD_FMT		db	"[CREATE_THREAD_DEBUG_EVENT]：hThread：%p，lpStartAddress：%p，lpThreadLocalBase：%p", 0dh, 0ah, 0
 CREATE_PROCESS_FMT		db	"[CREATE_PROCESS_DEBUG_EVENT]：hProcess：%p，lpBaseOfImage：%p，lpStartAddress：%p", 0dh, 0ah, 0
-EXIT_THREAD_FMT			db	"[EXIT_THREAD_DEBUG_EVENT]：dwExitCode：%p", 0dh, 0ah, 0
+EXIT_THREAD_FMT				db	"[EXIT_THREAD_DEBUG_EVENT]：dwExitCode：%p", 0dh, 0ah, 0
 EXIT_PROCESS_FMT			db	"[EXIT_PROCESS_DEBUG_EVENT]：dwExitCode：%p", 0dh, 0ah, 0
-LOAD_DLL_FMT				db	"基址：%p，路径：%s", 0dh, 0ah, 0	;[LOAD_DLL_DEBUG_EVENT]：
-UNLOAD_DLL_FMT			db	"[UNLOAD_DLL_DEBUG_EVENT]：lpBaseOfDll：%p", 0dh, 0ah, 0
-OUTPUT_DEBUG_STRING_FMT			db 	"[OUTPUT_DEBUG_STRING_EVENT]：", 0dh, 0ah, 0
-EXCEPTION_DEBUG_FMT					db	"[EXCEPTION_DEBUG_EVENT]：ExceptionCode：%p，ExceptionAddress：%p", 0dh, 0ah, 0
+LOAD_DLL_FMT					db	"基址：%p，路径：%s", 0dh, 0ah, 0	;[LOAD_DLL_DEBUG_EVENT]：
+UNLOAD_DLL_FMT				db	"[UNLOAD_DLL_DEBUG_EVENT]：lpBaseOfDll：%p", 0dh, 0ah, 0
+OUTPUT_DEBUG_STRING_FMT		db 	"[OUTPUT_DEBUG_STRING_EVENT]：", 0dh, 0ah, 0
+EXCEPTION_DEBUG_FMT				db	"[EXCEPTION_DEBUG_EVENT]：ExceptionCode：%p，ExceptionAddress：%p", 0dh, 0ah, 0
 SHOW_REGISTER_FMT1					db	"EAX = %p EBX = %p ECX = %p EDX = %p EIP = %p", 0dh, 0ah, 0
 SHOW_REGISTER_FMT2					db	"ESI = %p EDI = %p EBP = %p ESP = %p EFLAGS = %p", 0dh, 0ah, 0
-SHOW_REGISTER_FLAGS_FMT3			db	"ZF = %2x PF = %2x AF = %2x OF = %2x SF = %2x DF = %2x CF = %2x TF = %2x IF = %2x", 0dh, 0ah, 0
-SHOW_HELP										db	"[?] -- 帮助", 0dh, 0ah
+SHOW_REGISTER_FLAGS_FMT3		db	"ZF = %2x PF = %2x AF = %2x OF = %2x SF = %2x DF = %2x CF = %2x TF = %2x IF = %2x", 0dh, 0ah, 0
+SHOW_HELP									db	"[?] -- 帮助", 0dh, 0ah
 														db	"[q] -- 退出调试", 0dh, 0ah
 														db	"[r] -- 显示寄存器的值", 0dh, 0ah
 														db	"[tt] -- 单步步入", 0dh, 0ah
@@ -79,7 +79,7 @@ REGISTER_ESI									db	"ESI", 0
 REGISTER_EDI									db	"EDI", 0
 REGISTER_EBP									db	"EBP", 0
 REGISTER_ESP									db	"ESP", 0
-REGISTER_EFLAGS								db	"EFLAGS", 0
+REGISTER_EFLAGS							db	"EFLAGS", 0
 
 TIPS_DEBUG_HELPS							db	"[Tips]：输入 <?> 查看调试器命令帮助说明", 0dh, 0ah
 														db	"[Tips]：第一次输入 <g> 暂停到被调试程序的入口位置", 0dh, 0ah, 0

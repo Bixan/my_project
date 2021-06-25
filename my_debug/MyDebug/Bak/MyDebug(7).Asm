@@ -86,10 +86,10 @@ TIPS_DEBUG_HELPS						db	"[Tips]：输入 <?> 查看调试器命令帮助说明", 0dh, 0ah
 
 INPUT_COMMAND							db	"[cmd]：", 0			; 提示输入命令调试程序
 DIVISION											db 	" ", 0						; 分割字符串
-SRTTOK_IMPORT_SCRIPT					db	'0dh', 0					; 导入脚本分割		
-COMMAND_SCRIPT							db	"script.txt", 0			; 保存输入的命令（脚本功能）
+SRTTOK_IMPORT_SCRIPT				db	'0dh', 0					; 导入脚本分割		
+COMMAND_SCRIPT						db	"script.txt", 0			; 保存输入的命令（脚本功能）
 MODULE_FILE									db	"Module_File.txt", 0	; 保存模块信息
-INPUT_COMMAND_FMT					db	"%s", 0dh, 0ah, 0
+INPUT_COMMAND_FMT				db	"%s", 0dh, 0ah, 0
 
 ; 显示内存数据相关
 SHOW_HEX_MEMORY_DATA				db	"%.2x ", 0				; 显示十六进制数据

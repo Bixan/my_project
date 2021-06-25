@@ -53,7 +53,7 @@ MilestoneOnTime=2
 MilestoneOnDate=0
 MilestoneOnDateWhen=1
 MilestoneOnDateStatus=0
-MilestoneOnDateDate=19
+MilestoneOnDateDate=25
 MilestoneOnDateTimeYear=2021
 MilestoneOnDateTimeMonth=1
 MilestoneOnDateTimeDate=27
@@ -90,7 +90,7 @@ ProductVer4Range=0
 2=
 3=
 [Size]
-1=0,0,0,0,45
+1=0,0,0,0,268
 4=
 2=0,0,0,0,0
 3=0,0,0,0,276

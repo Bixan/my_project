@@ -1,18 +1,13 @@
 #pragma once
 #include <cassert>
 
-/*=======================================
-*			o(*￣▽￣*)o
-*****************************************************************
-*			Project Name：双向链表
-*
-*			FileName：MyLinkedList.h
-*
-*			Start Date：2020/06/02
-*
-*			Last UpDate：2020/06/16
-*
-=========================================*/
+/*===================================================
+*		o(*￣▽￣*)o
+*		Project Name：双向链表
+*		FileName：MyLinkedList.h
+*		Start Date：2020/06/02
+*		Last UpDate：2020/06/16
+*====================================================*/
 template<typename T>
 class CList
 {
@@ -22,9 +17,9 @@ private:
 	{
 		tagNode(int val) : m_val(val), m_pPre(nullptr), m_pNext(nullptr) {}
 		tagNode() : m_pPre(nullptr), m_pNext(nullptr) {}
-		int m_val;	// 保存的数据
-		tagNode* m_pPre;	// 指向上一个结点的指针，前驱
-		tagNode* m_pNext;	// 指向下一个结点的指针，后继
+		int m_val; // 保存的数据
+		tagNode* m_pPre; // 指向上一个结点的指针，前驱
+		tagNode* m_pNext; // 指向下一个结点的指针，后继
 	}NODE, *PNODE;
 
 public:
@@ -49,7 +44,6 @@ public:
 		{
 			// 判断当前结点 是否是 尾部哨兵结点
 			assert(m_pNode != m_pTailGuard);
-
 			m_pNode = m_pNode->m_pNext;
 
 			// 传递修改前的结点
@@ -61,8 +55,8 @@ public:
 		{
 			// 判断当前节点 是否是 头部哨兵结点
 			assert(m_pNode->m_pPre != m_pHeadGuard);
-
 			m_pNode = m_pNode->m_pPre;
+
 			return *this;
 		}
 
@@ -109,10 +103,10 @@ public:
 	};
 
 public:
-	iterator begin();	// 正序遍历，从链表头到链表尾
+	iterator begin(); // 正序遍历，从链表头到链表尾
 	iterator end();
 public:
-	iterator rbegin();	// 逆序遍历，从链表尾到链表头
+	iterator rbegin(); // 逆序遍历，从链表尾到链表头
 	iterator rend();
 public:
 	CList();
@@ -120,8 +114,8 @@ public:
 	编译器会自动生成拷贝构造以及重载运算符=
 	默认生成为浅拷贝，在这里会有问题
 	*/
-	CList(const CList& list);	// 拷贝构造
-	CList& operator=(const CList& list);	// 重载运算符 =
+	CList(const CList& list); // 拷贝构造
+	CList& operator=(const CList& list); // 重载运算符 =
 	virtual ~CList();
 
 public:
@@ -132,15 +126,15 @@ public:
 	// 传递了结点的指针，调用者可以对这个结点上的数据进行随意的修改，破坏了类的封装性
 
 	// 修改
-	bool SetVal(iterator pNode, int val);	// 传递了结点的指针，破坏了类的封装性
+	bool SetVal(iterator pNode, int val); // 传递了结点的指针，破坏了类的封装性
 
 	// 删除
 	bool RemoveHead();
 	bool RemoveTail();
-	bool Remove(iterator pNode);	// 传递了结点的指针，破坏了类的封装性
+	bool Remove(iterator pNode); // 传递了结点的指针，破坏了类的封装性
 
 	// 查询
-	iterator Find(int val);	// 返回值为一个结点的指针 
+	iterator Find(int val); // 返回值为一个结点的指针 
 
 	// 判断该链表是否是一个空链表
 	bool IsNull();
@@ -156,20 +150,16 @@ private:
 private:
 	PNODE m_pHeadGuard;	// 保存链表的头部哨兵
 	PNODE m_pTailGuard;	// 保存链表的尾部哨兵
-	int m_nNodeSize;	// 链表中结点的个数
+	int m_nNodeSize; // 链表中结点的个数
 };
 
+
 /*=======================================================
-*	typename CList<T>::iterator CList<T>::begin() -- 迭代器，从头部开始遍历链表中的数据
-*
+*	函数功能：迭代器，从头部开始遍历链表中的数据
 *	参数：已初始化的类对象
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 typename CList<T>::iterator CList<T>::begin()
@@ -181,16 +171,11 @@ typename CList<T>::iterator CList<T>::begin()
 
 
 /*=======================================================
-*	typename CList<T>::iterator CList<T>::end() -- 迭代器，链表最后一个结点的后继
-*
+*	函数功能：迭代器，链表最后一个结点的后继
 *	参数：已初始化的类对象
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 typename CList<T>::iterator CList<T>::end()
@@ -201,16 +186,11 @@ typename CList<T>::iterator CList<T>::end()
 }
 
 /*=======================================================
-*	typename CList<T>::iterator CList<T>::rbegin() 
-*	-- 迭代器，从链表最后一个结点开始反向遍历
+*	函数功能：迭代器，从链表最后一个结点开始反向遍历
 *	参数：已初始化的类对象
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 typename CList<T>::iterator CList<T>::rbegin()
@@ -222,16 +202,11 @@ typename CList<T>::iterator CList<T>::rbegin()
 
 
 /*=======================================================
-*	typename CList<T>::iterator CList<T>::rend() -- 迭代器，链表头结点的前驱结点为位置
-*
+*	函数功能：迭代器，链表头结点的前驱结点为位置
 *	参数：已初始化的类对象
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 typename CList<T>::iterator CList<T>::rend()
@@ -243,16 +218,11 @@ typename CList<T>::iterator CList<T>::rend()
 
 
 /*=======================================================
-*	CList<T>::CList() -- 无参构造，初始化链表
-*
+*	函数功能：无参构造，初始化链表
 *	参数：已初始化的类对象
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 CList<T>::CList()
@@ -260,17 +230,13 @@ CList<T>::CList()
 	InitList();
 }
 
+
 /*=======================================================
-*	CList<T>::CList(const CList& list) --拷贝构造，
-*
+*	函数功能：拷贝构造，
 *	参数：const CList& list -- 已初始化的类对象
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 CList<T>::CList(const CList& list)
@@ -284,16 +250,11 @@ CList<T>::CList(const CList& list)
 
 
 /*=======================================================
-*	CList<T>& CList<T>::operator=(const CList& list) -- 重载运算符 =
-*
+*	函数功能：重载运算符 =
 *	参数：const CList& list -- 已初始化的类对象
-*
 *	返回值：如果自己给自己赋值，返回 *this，赋值成功返回 *this
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 CList<T>& CList<T>::operator=(const CList& list)
@@ -311,25 +272,21 @@ CList<T>& CList<T>::operator=(const CList& list)
 	PNODE pNode = list.m_pHeadGuard->m_pNext;
 	while (pNode != list.m_pTailGuard)
 	{
-		AddTail(pNode->m_val);	// 将对方的数据添加到自己的链表中
+		AddTail(pNode->m_val); // 将对方的数据添加到自己的链表中
 
-		pNode = pNode->m_pNext;	// 指向下一个结点
+		pNode = pNode->m_pNext; // 指向下一个结点
 	}
 	return *this;
 }
 
 
 /*=======================================================
-*	CList<T>::~CList() -- 析构 
-*	清掉链表中的所有有效结点，此时类对象不在使用，销毁哨兵结点
+*	函数功能：析构 
+*		清掉链表中的所有有效结点，此时类对象不在使用，销毁哨兵结点
 *	参数：无
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 CList<T>::~CList()
@@ -346,18 +303,12 @@ CList<T>::~CList()
 }
 
 
-
 /*=======================================================
-*	bool CList<T>::AddHead(T val) -- 往头结点前添加结点
-*
+*	函数功能：往头结点前添加结点
 *	参数：val 添加的数据
-*
 *	返回值：调用 Insert 方法，插入成功返回true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 bool CList<T>::AddHead(int val)
@@ -366,17 +317,13 @@ bool CList<T>::AddHead(int val)
 	return Insert(begin(), val);
 }
 
+
 /*=======================================================
-*	bool CList<T>::AddHead(T val) -- 往尾结点前添加结点
-*
+*	函数功能： 往尾结点前添加结点
 *	参数：val 添加的数据
-*
 *	返回值：调用 Insert 方法，插入成功返回true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 bool CList<T>::AddTail(int val)
@@ -387,16 +334,13 @@ bool CList<T>::AddTail(int val)
 
 
 /*=======================================================
-*	bool CList<T>::Insert(iterator itr, T val) -- 往尾结点前添加结点
-*
-*	参数：pNode -- 要插入的结点位置（插入的位置是该节点的前面）valval 添加的数据
-*
+*	函数功能：往尾结点前添加结点
+*	参数：
+		pNode -- 要插入的结点位置（插入的位置是该节点的前面
+		val -- 添加的数据
 *	返回值：插入成功返回 true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 /*
 PNODE pNode：要插入的结点位置（插入的位置是该节点的前面）
@@ -412,7 +356,7 @@ bool CList<T>::Insert(iterator pNode, int val)
 	PNODE pNewNode = new NODE(val);
 
 	// 插入新的结点
-	PNODE pOldPre = pNode.m_pNode->m_pPre;	// 保存插入结点的前一个结点
+	PNODE pOldPre = pNode.m_pNode->m_pPre; // 保存插入结点的前一个结点
 
 	// 新结点的下一个结点指向pNode结点
 	pNewNode->m_pNext = pNode.m_pNode;
@@ -434,16 +378,11 @@ bool CList<T>::Insert(iterator pNode, int val)
 
 
 /*=======================================================
-*	bool CList<T>::SetVal(iterator pNode, T val) -- 往尾结点前添加结点
-*
+*	函数功能：往尾结点前添加结点
 *	参数：pNode -- 修改的结点 ，valval 修改后的数据
-*
 *	返回值：修改成功返回 true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 bool CList<T>::SetVal(iterator pNode, int val)
@@ -455,16 +394,11 @@ bool CList<T>::SetVal(iterator pNode, int val)
 
 
 /*=======================================================
-*	bool CList<T>::RemoveHead() -- 删除头结点
-*
+*	函数功能：删除头结点
 *	参数：无
-*
 *	返回值：调用Remove方法，删除成功返回true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 bool CList<T>::RemoveHead()
@@ -474,16 +408,11 @@ bool CList<T>::RemoveHead()
 
 
 /*=======================================================
-*	bool CList<T>::RemoveTail() -- 删除尾结点
-*
+*	函数功能：删除尾结点
 *	参数：无
-*
 *	返回值：调用Remove方法，删除成功返回true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 bool CList<T>::RemoveTail()
@@ -493,16 +422,11 @@ bool CList<T>::RemoveTail()
 
 
 /*=======================================================
-*	bool CList<T>::Remove(iterator pNode) -- 删除指定结点
-*
+*	函数功能：删除指定结点
 *	参数：iterator pNode -- 要删除的结点
-*
 *	返回值：删除成功返回true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 // 删除指定结点
 template<typename T>
@@ -512,27 +436,22 @@ bool CList<T>::Remove(iterator pNode)
 	PNODE pOldPre = pNode.m_pNode->m_pPre;
 	PNODE pOldNext = pNode.m_pNode->m_pNext;
 
-	pOldPre->m_pNext = pOldNext;	// 该结点前驱结点的后继结点 指向 该结点的后继结点
+	pOldPre->m_pNext = pOldNext; // 该结点前驱结点的后继结点 指向 该结点的后继结点
 	pOldNext->m_pPre = pOldPre;	// 该结点后继结点的前驱结点 指向 该结点的前驱结点
 
-	delete pNode.m_pNode;	// 删除该结点
-	m_nNodeSize--;	// 结点个数减1
+	delete pNode.m_pNode; // 删除该结点
+	m_nNodeSize--; // 结点个数减1
 
 	return true;
 }
 
 
 /*=======================================================
-*	typename CList<T>::iterator CList<T>::Find(T val) -- 在该链表中查找指定的数据
-*
+*	函数功能：在该链表中查找指定的数据
 *	参数：val -- 查找的数据
-*
 *	返回值：查找成功，返回对应的结点，查找失败 返回尾哨兵
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 typename CList<T>::iterator CList<T>::Find(int val)
@@ -544,7 +463,7 @@ typename CList<T>::iterator CList<T>::Find(int val)
 	{
 		if (pNewTemp->m_val == val)
 		{
-			return iterator(pNewTemp, m_pHeadGuard, m_pTailGuard);	// 找到返回该结点
+			return iterator(pNewTemp, m_pHeadGuard, m_pTailGuard) // 找到返回该结点
 		}
 		// 匹配失败，指向下一个结点
 		pNewTemp = pNewTemp->m_pNext;
@@ -555,16 +474,11 @@ typename CList<T>::iterator CList<T>::Find(int val)
 
 
 /*=======================================================
-*	bool CList<T>::IsNull() -- 判断链表是否为空
-*
+*	函数功能：判断链表是否为空
 *	参数：无
-*
 *	返回值：如果链表中有效的节点数量为0 返回false，返回true
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 bool CList<T>::IsNull()
@@ -574,16 +488,11 @@ bool CList<T>::IsNull()
 
 
 /*=======================================================
-*	int CList<T>::NodeSize() -- 链表节点个数
-*
+*	函数功能：链表节点个数
 *	参数：无
-*
 *	返回值：返回链表中有效的节点数量
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 int CList<T>::GetNodeSize()const
@@ -593,16 +502,11 @@ int CList<T>::GetNodeSize()const
 
 
 /*=======================================================
-*	void CList<T>::Clear()-- 清空链表(哨兵结点暂时不需要进行释放销毁)
-*
+*	函数功能：清空链表(哨兵结点暂时不需要进行释放销毁)
 *	参数：无
-*
 *	返回值：返回链表中有效的节点数量
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 // 对象销毁时，应将哨兵也进行销毁
 template<typename T>
@@ -610,22 +514,17 @@ void CList<T>::Clear()
 {
 	while (!IsNull())
 	{
-		RemoveHead();	// 这里结点数量不再需要进行 减1操作
+		RemoveHead(); // 这里结点数量不再需要进行 减1操作
 	}
 }
 
 
 /*=======================================================
-*	void CList<T>::InitList() -- 初始化链表 
-*
+*	函数功能：初始化链表 
 *	参数：无
-*
 *	返回值：无
-*
 *	警告：无
-*
 *	更新：2020/06/08
-*
 ========================================================*/
 template<typename T>
 void CList<T>::InitList()

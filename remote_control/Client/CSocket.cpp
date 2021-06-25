@@ -30,9 +30,9 @@ BOOL CTCPSocket::CreateSocket()
 BOOL CTCPSocket::BindSocket(char* pszIPAddr, USHORT usProt)
 {
 	// socket 初始化成功
-	sockaddr_in addr;	// sockaddr_in 结构体将端口，IP地址，保留数据分开
-	addr.sin_family = AF_INET;	// 使用IPV4协议
-	addr.sin_port = ::htons(usProt);	// 向操作系统申请一个端口
+	sockaddr_in addr; // sockaddr_in 结构体将端口，IP地址，保留数据分开
+	addr.sin_family = AF_INET; // 使用IPV4协议
+	addr.sin_port = ::htons(usProt); // 向操作系统申请一个端口
 	addr.sin_addr.S_un.S_addr = ::inet_addr(pszIPAddr);
 
 	// 将本地地址和套接字进行关联
@@ -61,16 +61,16 @@ SOCKET CTCPSocket::AcceptSocket(SOCKADDR_IN& addr)
 	int nSize = sizeof(addr);
 	// 接受客户端连接
 
-	return ::accept(m_socket, (sockaddr*)&addr, &nSize); //阻塞
+	return ::accept(m_socket, (sockaddr*)&addr, &nSize); // 阻塞
 }
 
 // 建立到指定套接字的连接
 BOOL CTCPSocket::ConnectSocket(char* pszIPAddr, USHORT usProt)
 {
 	// socket 初始化成功
-	sockaddr_in addr;	// sockaddr_in 结构体将端口，IP地址，保留数据分开
-	addr.sin_family = AF_INET;	// 使用IPV4协议
-	addr.sin_port = ::htons(usProt);	// 向操作系统申请一个端口
+	sockaddr_in addr; // sockaddr_in 结构体将端口，IP地址，保留数据分开
+	addr.sin_family = AF_INET; // 使用IPV4协议
+	addr.sin_port = ::htons(usProt); // 向操作系统申请一个端口
 	addr.sin_addr.S_un.S_addr = inet_addr(pszIPAddr);
 
 	// 将本地地址和套接字进行关联
@@ -121,7 +121,7 @@ BOOL CTCPSocket::Startup()
 	// 检查版本
 	if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2)
 	{
-		Cleanup();	// 关闭套接字库
+		Cleanup(); // 关闭套接字库
 		return FALSE;
 	}
 	return TRUE;
@@ -156,8 +156,10 @@ void CTCPSocket::ShowErrorInfo(const char* prefix)
 
 	char szBuff[MAXBYTE] = { 0 };
 	sprintf(szBuff, "codes: %p, %s: , %s: ", 
-		(void*)WSAGetLastError(),prefix, (char*)lpMsgBuf);
-	puts(szBuff);
+		(void*)WSAGetLastError(), 
+		prefix, 
+		(char*)lpMsgBuf);
 
+	puts(szBuff);
 	LocalFree(lpMsgBuf);
 }

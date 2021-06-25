@@ -27,12 +27,12 @@ protected:
 public:
 	CMessages* m_pMessages;
 public:
-	virtual BOOL OnInitDialog();	// 初始化对话框
+	virtual BOOL OnInitDialog(); // 初始化对话框
 	afx_msg void OnClose();
-	void SetMessages(CMessages* pMessages);		// 设置消息
-	afx_msg LRESULT OnRecvDataError(WPARAM wParam, LPARAM lParam);	// 接收客户端屏幕数据错误
-	afx_msg LRESULT OnSendDataError(WPARAM wParam, LPARAM lParam);	// 发送数据错误
-	afx_msg LRESULT OnGetClientScreenData(WPARAM wParam, LPARAM lParam);	// 获取客户端屏幕数据
+	void SetMessages(CMessages* pMessages); // 设置消息
+	afx_msg LRESULT OnRecvDataError(WPARAM wParam, LPARAM lParam); // 接收客户端屏幕数据错误
+	afx_msg LRESULT OnSendDataError(WPARAM wParam, LPARAM lParam); // 发送数据错误
+	afx_msg LRESULT OnGetClientScreenData(WPARAM wParam, LPARAM lParam); // 获取客户端屏幕数据
 
 	// 鼠标左键双击
 	afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);

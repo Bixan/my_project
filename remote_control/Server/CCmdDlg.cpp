@@ -59,7 +59,7 @@ BOOL CCmdDlg::OnInitDialog()
 		return 0;
 	}
 
-	return TRUE;	// return TRUE unless you set the focus to a control
+	return TRUE; // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
 
@@ -123,9 +123,12 @@ void CCmdDlg::GetCommandSendServer()
 	}
 }
 
-// 判断控件上的字符串是否可以删除
-// 返回值 -- TRUE -- 可以删除
-// 返回值 -- FALSE -- 不可以删除
+/*
+判断控件上的字符串是否可以删除
+返回值:
+	TRUE 可以删除
+	FALSE 不可以删除
+*/
 BOOL CCmdDlg::IsStrDel()
 {
 	// 获取控件上输入的字符串
@@ -155,16 +158,16 @@ LRESULT CCmdDlg::OnGetCommandData(WPARAM wParam, LPARAM lParam)
 	if (!m_csInput.IsEmpty())
 	{
 		m_EditCmd.ReplaceSel("\r\n");
-		m_csInput.Empty();	// 释放CString对象
+		m_csInput.Empty(); // 释放CString对象
 	}
 
-	//将接收到的数据设到Edit控件上
+	// 将接收到的数据设到Edit控件上
 	m_EditCmd.ReplaceSel(pBuff);
 
-	//释放申请的空间
+	// 释放申请的空间
 	delete[] pBuff;
 
-	//获取编辑框中的字符串
+	// 获取编辑框中的字符串
 	m_EditCmd.GetWindowText(m_csOutPut);
 
 	return 0;

@@ -99,7 +99,7 @@ LRESULT CScreenDlg::OnGetClientScreenData(WPARAM wParam, LPARAM lParam)
 	uLongf outSize;
 	char* pUncompress = new char[pScreenInfo->m_SrcSize];
 
-	//解压缩
+	// 解压缩
 	uncompress((unsigned char*)pUncompress,
 		&outSize,
 		(unsigned char*)pScreenData,
@@ -220,7 +220,7 @@ BOOL CScreenDlg::PreTranslateMessage(MSG* pMsg)
 		DWORD iCapital = GetKeyState(VK_CAPITAL);
 		BOOL bShift = (iShift & g_KeyMask) == g_KeyMask;
 		BOOL bCapital = (iCapital & 1) == 1;
-		char szBuff[2] = { 0 };	 // 存储按键内容
+		char szBuff[2] = { 0 }; // 存储按键内容
 		PACKETHEAD keyph;
 		// 顶部数字键
 		if (vKey >= '0' && vKey <= '9')

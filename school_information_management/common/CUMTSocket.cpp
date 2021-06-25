@@ -71,7 +71,9 @@ bool CUMTSocket::Accept(const char * szIP, short nPort)
 		0,
 		(sockaddr*)&siDst,
 		&nLenOfSiDst);
-	if (nRet == SOCKET_ERROR || pkg.m_nType != ESTABLISH || pkg.m_nSeq != m_nNextRecvSeq)
+	if (nRet == SOCKET_ERROR || 
+		pkg.m_nType != ESTABLISH || 
+		pkg.m_nSeq != m_nNextRecvSeq)
 	{
 		return false;
 	}
@@ -85,8 +87,8 @@ bool CUMTSocket::Accept(const char * szIP, short nPort)
 	m_Pool.Create(4);
 	// 启动收发数据线程
 	m_bRuning = true;
-	StartRecvFunction();	// 接收数据线程
-	StartSendFunction();	// 发送数据线程
+	StartRecvFunction(); // 接收数据线程
+	StartSendFunction(); // 发送数据线程
 
 	return true;
 }
@@ -125,7 +127,8 @@ bool CUMTSocket::Connect(const char * szIP, short nPort)
 	{
 		return false;
 	}
-	m_nNextRecvSeq = pkg.m_nSeq + 1; // 下一个接收的包的seq
+	// 下一个接收的包的seq
+	m_nNextRecvSeq = pkg.m_nSeq + 1;
 
 	m_nNextSendSeq++; 
 	PACKAGE pkgSend2(ESTABLISH, m_nNextSendSeq, nullptr, 0);
@@ -140,7 +143,8 @@ bool CUMTSocket::Connect(const char * szIP, short nPort)
 		return false;
 	}
 
-	m_nNextSendSeq++; // 下一个发送的包的seq
+	// 下一个发送的包的seq
+	m_nNextSendSeq++;
 
 	// 启动收发线程
 	m_bRuning = true;
@@ -253,7 +257,7 @@ void CUMTSocket::DataFromList2Buf()
 
 			m_bufRead.Write(itr->m_data, itr->m_nLen);
 			m_lstRecv.erase(itr);
-			m_nNextRecvSeq++; //	下一个等待接收的包的序号
+			m_nNextRecvSeq++; // 下一个等待接收的包的序号
 
 			break;
 		}
@@ -308,7 +312,7 @@ void CUMTSocket::GetCheckValue(const char* pBuff, int nBufLen)
 	m_nCheckValue = atoi(szBuffTemp);
 }
 
-//	接收数据线程
+// 接收数据线程
 DWORD CUMTSocket::RecvFunction(LPVOID lpParam)
 {
 	CUMTSocket* pThis = (CUMTSocket*)lpParam;
@@ -405,7 +409,7 @@ DWORD CUMTSocket::RecvFunction(LPVOID lpParam)
 	return 0;
 }
 
-//	发送数据线程
+// 发送数据线程
 DWORD CUMTSocket::SendFunction(LPVOID lpParam)
 {
 	CUMTSocket* pThis = (CUMTSocket*)lpParam;

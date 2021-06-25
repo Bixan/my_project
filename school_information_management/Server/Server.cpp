@@ -8,16 +8,16 @@
 using namespace std;
 #pragma comment(lib, "libmysql.lib")
 
-#define INCREASE	"increase"	// 增加
-#define DELETE	"delete"	// 删除
-#define REVISE	"revise"	// 修改
-#define QUERY	"query"	// 查询
-#define EXIT		"exit"		// 退出
+#define INCREASE "increase" // 增加
+#define DELETE "delete" // 删除
+#define REVISE "revise" // 修改
+#define QUERY "query" // 查询
+#define EXIT "exit" // 退出
 
-//#define STU_TABLE		"T_STUDENT"	// 学生表
-//#define CLASS_TABLE		"T_CLASS"	// 班级表
-//#define COURSE_TABLE	"T_COURSE"	// 课程表
-//#define SELECT_TABLE		"T_SELECT"	// 选课表
+//#define STU_TABLE "T_STUDENT" // 学生表
+//#define CLASS_TABLE "T_CLASS" // 班级表
+//#define COURSE_TABLE "T_COURSE" // 课程表
+//#define SELECT_TABLE "T_SELECT" // 选课表
 
 using namespace std;
 CUMTSocket g_socket;
@@ -154,7 +154,7 @@ bool QueryTablesData()
 bool CommonTablesData()
 {
 	char szBytesAllRecv[0x1000];
-	int nBytesRecv = 0;		 // 当前接收字节数
+	int nBytesRecv = 0; // 当前接收字节数
 	// 接收客服端发送的数据
 	g_socket.Recv(szBytesAllRecv, sizeof(szBytesAllRecv), nBytesRecv);
 	char szBuff[0x100] = { 0 };
@@ -271,12 +271,12 @@ int main()
 	InitSocket();
 	cout << "[Server]: 客户端连接成功" << endl;
 
-	int nBytesAllRecv = 0;		// 接收总字节数
+	int nBytesAllRecv = 0; // 接收总字节数
 	// 接收数据
 	while (true)
 	{
 		char szBytesAllRecv[0x1000] = { 0 };
-		int nBytesRecv = 0;		 // 当前接收字节数
+		int nBytesRecv = 0; // 当前接收字节数
 		// 接收数据
 		g_socket.Recv(szBytesAllRecv, sizeof(szBytesAllRecv), nBytesRecv);
 		char szBuff[100] = { 0 };
@@ -323,9 +323,11 @@ int main()
 			}
 			// 查询表数据
 			char szAllRecvQueryBytes[0x100] = { 0 };
-			int nAllRecvQueryBytes = 0;		 // 当前接收字节数
+			int nAllRecvQueryBytes = 0; // 当前接收字节数
 			// 接收查询的数据
-			g_socket.Recv(szAllRecvQueryBytes, sizeof(szAllRecvQueryBytes), nAllRecvQueryBytes);
+			g_socket.Recv(szAllRecvQueryBytes, 
+				sizeof(szAllRecvQueryBytes), 
+				nAllRecvQueryBytes);
 			char szBuffTemp[100] = { 0 };
 			memcpy(szBuffTemp, szAllRecvQueryBytes, nAllRecvQueryBytes);
 			if (!QueryTableData(szBuffTemp, nAllRecvQueryBytes))

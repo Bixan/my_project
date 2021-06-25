@@ -1,0 +1,6 @@
+﻿  CString.cpp
+D:\ileemi\MyGithub\my_project\student_management_system\StudentManagementSystem\CString.cpp(1119,27): warning C4018: “>”: 有符号/无符号不匹配
+  CStudent.cpp
+  main.cpp
+  正在生成代码...
+  StudentManagementSystem.vcxproj -> D:\ileemi\MyGithub\my_project\student_management_system\StudentManagementSystem\Debug\StudentManagementSystem.exe

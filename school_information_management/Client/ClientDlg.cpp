@@ -135,8 +135,8 @@ BOOL CClientDlg::OnInitDialog()
 
 	// 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
 	//  执行此操作
-	SetIcon(m_hIcon, TRUE);	// 设置大图标
-	SetIcon(m_hIcon, FALSE);	// 设置小图标
+	SetIcon(m_hIcon, TRUE); // 设置大图标
+	SetIcon(m_hIcon, FALSE); // 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
 
@@ -184,10 +184,11 @@ void CClientDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// 如果向对话框添加最小化按钮，则需要下面的代码
-//  来绘制该图标。  对于使用文档/视图模型的 MFC 应用程序，
-//  这将由框架自动完成。
 
+/*
+如果向对话框添加最小化按钮，则需要下面的代码来绘制该图标。
+对于使用文档/视图模型的 MFC 应用程序，这将由框架自动完成。
+*/
 void CClientDlg::OnPaint()
 {
 	if (IsIconic())
@@ -391,7 +392,7 @@ void CClientDlg::OnBnClickedQuery()
 void CClientDlg::UpdateListInfo()
 {
 	char szBytesAllRecv[0x200] = { 0 };
-	int nBytesRecv = 0;     // 当前接收字节数
+	int nBytesRecv = 0; // 当前接收字节数
 	char szBuffTemp[100] = { 0 };
 	memcpy(szBuffTemp, szBytesAllRecv, nBytesRecv);
 	m_socket.Recv(szBytesAllRecv, sizeof(szBytesAllRecv), nBytesRecv);
@@ -427,7 +428,7 @@ void CClientDlg::UpdateListInfo()
 		m_ListShowQueryInfo.InsertColumn(1, szField22, LVCFMT_LEFT, 100);
 
 		// 接收查询的表数据
-		nBytesRecv = 0;     // 当前接收字节数
+		nBytesRecv = 0; // 当前接收字节数
 		memset(szBytesAllRecv, 0, sizeof(szBytesAllRecv));
 		memset(szBuffTemp, 0, sizeof(szBuffTemp));
 		memcpy(szBuffTemp, szBytesAllRecv, nBytesRecv);
@@ -451,7 +452,7 @@ void CClientDlg::UpdateListInfo()
 		m_ListShowQueryInfo.InsertColumn(2, szField3, LVCFMT_LEFT, 100);
 
 		// 接收查询的表数据
-		nBytesRecv = 0;     // 当前接收字节数
+		nBytesRecv = 0; // 当前接收字节数
 		memset(szBytesAllRecv, 0, sizeof(szBytesAllRecv));
 		memset(szBuffTemp, 0, sizeof(szBuffTemp));
 		memcpy(szBuffTemp, szBytesAllRecv, nBytesRecv);
@@ -466,11 +467,12 @@ void CClientDlg::ShowTableData(const char* pszBuff)
 	char buf[1024] = { 0 };
 	ULONG i = 0;
 	if (pszBuff[i] != '\0')
-	{ //字符串不为空
+	{ 
+		// 字符串不为空
 		while (true)
 		{
-			while (pszBuff[i] == '\r' || pszBuff[i] == '\n') i++; //跳过换行符
-			if (pszBuff[i] == '\0') break; //读取结束
+			while (pszBuff[i] == '\r' || pszBuff[i] == '\n') i++; // 跳过换行符
+			if (pszBuff[i] == '\0') break; // 读取结束
 			if (1 == sscanf_s(pszBuff + i, "%1023[^\r\n]", buf, 1024))
 			{
 				// 遍历字段
@@ -522,7 +524,7 @@ void CClientDlg::ShowTableData(const char* pszBuff)
 			}
 			else
 			{
-				break; //出错退出
+				break; // 出错退出
 			}
 		}
 	}

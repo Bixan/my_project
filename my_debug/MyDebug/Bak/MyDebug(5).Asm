@@ -131,11 +131,11 @@ COMMAND_HELP										db	"?", 0	; 帮助
 COMMAND_MODULE_LIST						db	"ml", 0	; 查看模块列表
 COMMAND_EXPORT_SCRIPT						db	"es", 0	; 导出脚本
 COMMAND_IMPORT_SCRIPT					db	"ls", 0	; 导入脚本
-COMMAND_MEMORY_DUMP					db	"dump", 0		; 内存 dump PE到文件
+COMMAND_MEMORY_DUMP					db	"dump", 0	; 内存 dump PE到文件
 COMMAND_DISPLAY_MEMORY_DATA		db	"dd", 0			; 显示内存数据
-COMMAND_EDIT_MEMORY_DATA			db	"em", 0	; 修改指定内存上对应的值
-COMMADN_EDIT_REGISTER_VALUE			db	"er", 0	; 修改执行寄存器的值
-COMMAND_GO_RETURN							db	"gr", 0	; 执行到返回
+COMMAND_EDIT_MEMORY_DATA			db	"em", 0		; 修改指定内存上对应的值
+COMMADN_EDIT_REGISTER_VALUE			db	"er", 0			; 修改执行寄存器的值
+COMMAND_GO_RETURN							db	"gr", 0			; 执行到返回
 COMMAND_TRACK									db	"track", 0		; 跟踪（指令记录）
 
 
@@ -191,23 +191,23 @@ DEBUG_PROCESS_INFO ends
 g_DebugEv							DEBUG_EVENT {0}
 g_context								CONTEXT {0}
 g_IsSystemBreakPoint			db	FALSE
-g_IsEip									db	FALSE
+g_IsEip										db	FALSE
 g_OldAddresss						dd	NULL
-g_SetBreakPoint					db	0cch					; 设置单步断点
+g_SetBreakPoint						db	0cch					; 设置单步断点
 g_BreakPointOldCode			db	NULL				; 保存下断点前目标程序旧的代码，便于还原代码
-g_BreakPointAddress			dd	NULL				; 保存下断点的地址
-g_IsBpStep							db	FALSE				; 是否是断点单步
+g_BreakPointAddress				dd	NULL				; 保存下断点的地址
+g_IsBpStep								db	FALSE				; 是否是断点单步
 g_IsOldCode							db	FALSE				; 是否一次性断点
-g_IsNormalStep					db	FALSE				; 正常单步标志（t）
+g_IsNormalStep						db	FALSE				; 正常单步标志（t）
 g_IsMemorStep						db	FALSE				; 是否是内存断点单步
 g_IsMemorOnlyOne				dd	FALSE				; 是否是一次性内存断点
-g_BMOldProtected				dd	NULL				; 保存旧的内存保护属性
-g_BMAddress						dd	NULL				; 保存旧的内存断点地址
-g_BMBytes							dd	NULL				; 保存访问的内存字节数
-g_IsModule							db	TRUE				; 目标进程加载的模块
-g_hFile									dd	NULL				; 保存创建的文件句柄
-g_IsUserInput						db	TRUE				; 默认是用户输入的命令
-g_IsFirstGo							db	TRUE				; 默认第一次按 "g" 命令
+g_BMOldProtected					dd	NULL				; 保存旧的内存保护属性
+g_BMAddress							dd	NULL				; 保存旧的内存断点地址
+g_BMBytes								dd	NULL				; 保存访问的内存字节数
+g_IsModule								db	TRUE				; 目标进程加载的模块
+g_hFile										dd	NULL				; 保存创建的文件句柄
+g_IsUserInput							db	TRUE				; 默认是用户输入的命令
+g_IsFirstGo								db	TRUE				; 默认第一次按 "g" 命令
 g_lpBaseOfImage					dd	NULL				; 被调试进程的基地址
 g_CanDump							db	TRUE				; 是否可以进行内存dump
 g_CurrentExceptionAddr		dd	NULL				; 当前产生异常的地址

@@ -42,8 +42,10 @@ int CThreadPool::Create(int maxThreads)
 
 	_maxThreads = maxThreads;
 	_threads = new HANDLE[maxThreads];
-	if (_threads == NULL)
-		return -1;	// 申请内存失败
+	if (_threads == NULL) 
+	{
+		return -1; // 申请内存失败
+	}
 
 	memset(_threads, 0, sizeof(HANDLE) * maxThreads);
 	_curThreads = 0;
@@ -54,16 +56,16 @@ int CThreadPool::Create(int maxThreads)
 int CThreadPool::AddTask(ITask* Task)
 {
 	/*
-		1.添加任务到队列
-		2.如果没空闲的线程（创建线程 max）
-		3.如果有空闲的线程（通知处理任务)	
+	1.添加任务到队列
+	2.如果没空闲的线程（创建线程 max）
+	3.如果有空闲的线程（通知处理任务)	
 	*/
 
 	// 信号量 -- 通知所需线程处理任务
 	EnterCriticalSection(&_cs);	// 进入临界区
 	
 	// 将任务添加到任务队列中 -- 防止添加任务的时候，别的进程拿任务
-	_taskQueue.push(Task);		// 退出临界区
+	_taskQueue.push(Task); // 退出临界区
 	
 	LeaveCriticalSection(&_cs);
 
@@ -141,7 +143,7 @@ DWORD __stdcall CThreadPool::ThreadProc(LPVOID lpParameter)
 	while (true)
 	{
 		// 使用内存锁 -- 解决对应的同步问题
-		InterlockedIncrement(&pool->_idleCount);	// 空闲状态
+		InterlockedIncrement(&pool->_idleCount); // 空闲状态
 		// pool->_idleCount++;
 
 		// 等待多个任务

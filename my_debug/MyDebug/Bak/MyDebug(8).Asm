@@ -81,7 +81,7 @@ REGISTER_EBP									db	"EBP", 0
 REGISTER_ESP									db	"ESP", 0
 REGISTER_EFLAGS							db	"EFLAGS", 0
 
-TIPS_DEBUG_HELPS							db	"[Tips]：输入 <?> 查看调试器命令帮助说明", 0dh, 0ah
+TIPS_DEBUG_HELPS						db	"[Tips]：输入 <?> 查看调试器命令帮助说明", 0dh, 0ah
 														db	"[Tips]：第一次输入 <g> 暂停到被调试程序的入口位置", 0dh, 0ah, 0
 
 INPUT_COMMAND							db	"[cmd]：", 0			; 提示输入命令调试程序
